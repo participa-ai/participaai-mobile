@@ -1,5 +1,5 @@
 <h1 align="center">
-  <a href="#" alt="participaai-mobile"> 🚀 participaai-mobile </a>
+  <a href="#" alt="participaai-mobile"> 📢 Participa aí! Mobile App </a>
 </h1>
 
 <h3 align="center">
@@ -12,6 +12,14 @@
   <img alt="NPM" src="https://img.shields.io/npm/l/react?style=for-the-badge">
 </p>
 <br/ >
+
+## 🚀 Rode o aplicativo no Expo
+
+<p align="center">
+  <a href="https://expo.io/@participa-ai/projects/participaai-mobile">
+    <img alt="expo" src="https://img.shields.io/badge/EXPO-https%3A%2F%2Fexp.host%2F%40participa--ai%2Fparticipaai--mobile-white?style=for-the-badge&logo=expo&color=dedede">
+  <a>
+</p>
 
 ## 🧭 Instalação
 
@@ -77,6 +85,25 @@ As seguintes ferramentas foram usadas na construção do projeto:
       <a href="https://www.linkedin.com/in/lucash-hirata/">
         <img
           src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white;link=https://www.linkedin.com/in/lucash-hirata/" 
+          style="max-width:100%;" 
+        />
+      </a>
+    </td>
+    <td align="center">
+      <img
+        style="border-radius: 50%;" 
+        src="https://avatars.githubusercontent.com/u/81780358?v=4" 
+        width="100px;" 
+        alt=""
+      />
+      <br />
+      <sub>
+        <b>Raquel Nogueira</b>
+      </sub>
+      <br />
+      <a href="https://www.linkedin.com/in/raquel-nogueira-da-silva-5702a6153/">
+        <img
+          src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white;link=https://www.linkedin.com/in/raquel-nogueira-da-silva-5702a6153/" 
           style="max-width:100%;" 
         />
       </a>
