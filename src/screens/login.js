@@ -5,30 +5,30 @@ import { globalStyles } from '../styles/global';
 import AuthContext from '../contexts/auth';
 
 export default class Login extends Component {
-  static contextType = AuthContext;
+    static contextType = AuthContext;
 
-  handleLogin = () => {
-    const { login } = this.context;
-    login();
-  };
+    handleLogin = () => {
+        const { login } = this.context;
+        login();
+    };
 
-  handleForgot = () => {
-    this.props.navigation.navigate('ForgotPassword');
-  };
+    handleForgot = () => {
+        this.props.navigation.navigate('ForgotPassword');
+    };
 
-  handleSignup = () => {
-    this.props.navigation.navigate('Signup');
-  };
+    handleSignup = () => {
+        this.props.navigation.navigate('Signup');
+    };
 
-  render() {
-    return (
-      <View style={globalStyles.container}>
-        <Button onPress={this.handleLogin} title="Login" />
-        <Button onPress={this.handleForgot} title="Esqueci" />
-        <Button onPress={this.handleSignup} title="Cadastrar" />
-      </View>
-    );
-  }
+    render() {
+        return (
+            <View style={globalStyles.container}>
+                <Button onPress={this.handleLogin} title="Login" />
+                <Button onPress={this.handleForgot} title="Esqueci" />
+                <Button onPress={this.handleSignup} title="Cadastrar" />
+            </View>
+        );
+    }
 }
 
 const styles = StyleSheet.create({});

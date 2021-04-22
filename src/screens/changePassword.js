@@ -5,13 +5,13 @@ import { View, Text, StyleSheet } from 'react-native';
 import { globalStyles } from '../styles/global';
 
 export default class ChangePassword extends Component {
-  render() {
-    return (
-      <View style={globalStyles.container}>
-        <Text>ChangePassword</Text>
-      </View>
-    );
-  }
+    render() {
+        return (
+            <View style={globalStyles.container}>
+                <Text>ChangePassword</Text>
+            </View>
+        );
+    }
 }
 
 const styles = StyleSheet.create({});

@@ -6,13 +6,13 @@ import { AuthProvider } from './contexts/auth';
 import Routes from './stacks/index';
 
 export default class App extends React.Component {
-  render() {
-    return (
-      <NavigationContainer>
-        <AuthProvider>
-          <Routes />
-        </AuthProvider>
-      </NavigationContainer>
-    );
-  }
+    render() {
+        return (
+            <NavigationContainer>
+                <AuthProvider>
+                    <Routes />
+                </AuthProvider>
+            </NavigationContainer>
+        );
+    }
 }

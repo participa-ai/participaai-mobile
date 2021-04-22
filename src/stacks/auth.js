@@ -9,30 +9,33 @@ import RecoveryEmailSent from '../screens/recoveryEmailSent';
 const AuthStack = createStackNavigator();
 
 export default class AuthStacks extends Component {
-  render() {
-    return (
-      <AuthStack.Navigator
-        initialRouteName="Login"
-        screenOptions={defaultScreenOptions}
-      >
-        <AuthStack.Screen name="Login" component={Login} />
-        <AuthStack.Screen name="Signup" component={Signup} />
-        <AuthStack.Screen name="ForgotPassword" component={ForgotPassword} />
-        <AuthStack.Screen
-          name="RecoveryEmailSent"
-          component={RecoveryEmailSent}
-        />
-      </AuthStack.Navigator>
-    );
-  }
+    render() {
+        return (
+            <AuthStack.Navigator
+                initialRouteName="Login"
+                screenOptions={defaultScreenOptions}
+            >
+                <AuthStack.Screen name="Login" component={Login} />
+                <AuthStack.Screen name="Signup" component={Signup} />
+                <AuthStack.Screen
+                    name="ForgotPassword"
+                    component={ForgotPassword}
+                />
+                <AuthStack.Screen
+                    name="RecoveryEmailSent"
+                    component={RecoveryEmailSent}
+                />
+            </AuthStack.Navigator>
+        );
+    }
 }
 
 const defaultScreenOptions = {
-  headerTintColor: '#fff',
-  headerStyle: {
-    backgroundColor: 'coral',
-  },
-  headerTitleStyle: {
-    fontWeight: 'bold',
-  },
+    headerTintColor: '#fff',
+    headerStyle: {
+        backgroundColor: 'coral',
+    },
+    headerTitleStyle: {
+        fontWeight: 'bold',
+    },
 };

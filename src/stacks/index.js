@@ -7,31 +7,31 @@ import AuthStacks from './auth';
 import AuthContext from '../contexts/auth';
 
 export default class Routes extends Component {
-  static contextType = AuthContext;
+    static contextType = AuthContext;
 
-  render() {
-    const { authenticated, loading } = this.context;
+    render() {
+        const { authenticated, loading } = this.context;
 
-    if (loading) {
-      return (
-        <View style={styles.activityIndicator}>
-          <ActivityIndicator size="large" />
-        </View>
-      );
+        if (loading) {
+            return (
+                <View style={styles.activityIndicator}>
+                    <ActivityIndicator size="large" />
+                </View>
+            );
+        }
+
+        if (authenticated) {
+            return <AppStacks />;
+        } else {
+            return <AuthStacks />;
+        }
     }
-
-    if (authenticated) {
-      return <AppStacks />;
-    } else {
-      return <AuthStacks />;
-    }
-  }
 }
 
 const styles = StyleSheet.create({
-  activityIndicator: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+    activityIndicator: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
 });

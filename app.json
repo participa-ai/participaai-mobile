@@ -22,11 +22,14 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      }
+        "backgroundColor": "#FF5C46"
+      },
+      "package": "com.participaai.participaaimobile"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "Participa aí! Mobile App",
+    "githubUrl": "https://github.com/participa-ai/participaai-mobile"
   }
 }
