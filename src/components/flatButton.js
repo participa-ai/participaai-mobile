@@ -1,65 +1,73 @@
 import React, { Component } from 'react';
-import { Text, TouchableOpacity, StyleSheet } from 'react-native';
+import {
+    Text,
+    TouchableOpacity,
+    StyleSheet,
+    View,
+    Dimensions,
+} from 'react-native';
 
-export default class FlatButton extends React.Component {
+import colors from '../styles/colors';
+
+export default class FlatButton extends Component {
     render() {
         const {
             label,
-            textColor,
+            color,
             backgroundColor,
             secondary,
             onPress,
+            style,
         } = this.props;
 
-        if (secondary)
-            return (
+        return (
+            <View style={style}>
                 <TouchableOpacity
-                    style={[{ backgroundColor }, styles.buttonSecondary]}
+                    style={[
+                        { backgroundColor },
+                        secondary ? styles.buttonSecondary : styles.button,
+                    ]}
                     onPress={onPress}
                 >
-                    <Text style={[{ textColor }, styles.textSecondary]}>
+                    <Text
+                        style={[
+                            { color },
+                            secondary ? styles.textSecondary : styles.text,
+                        ]}
+                    >
                         {label}
                     </Text>
                 </TouchableOpacity>
-            );
-
-        return (
-            <TouchableOpacity
-                style={[{ backgroundColor }, styles.button]}
-                onPress={onPress}
-            >
-                <Text style={[{ textColor }, styles.text]}>{label}</Text>
-            </TouchableOpacity>
+            </View>
         );
     }
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        paddingTop: Constants.statusBarHeight,
-        backgroundColor: '#ecf0f1',
-        padding: 8,
-    },
     button: {
         alignItems: 'center',
-        backgroundColor: '#FF5C46',
-        padding: 10,
+        backgroundColor: colors.orange,
+        padding: 16,
         borderRadius: 50,
+        width: Dimensions.get('screen').width * 0.75,
     },
     text: {
-        color: '#FFF',
-        fontWeight: 'bold',
+        color: colors.white,
+        fontFamily: 'roboto-bold',
+        fontSize: 20,
+        textTransform: 'uppercase',
     },
     buttonSecondary: {
         alignItems: 'center',
-        backgroundColor: '#DCE2E3',
-        padding: 10,
+        backgroundColor: colors.background,
+        padding: 16,
         borderRadius: 50,
+        width: Dimensions.get('screen').width * 0.75,
     },
     textSecondary: {
-        color: '#40738B',
-        fontWeight: 'bold',
+        color: colors.blue,
+        fontFamily: 'roboto-bold',
+        fontSize: 20,
+        textTransform: 'uppercase',
     },
 });

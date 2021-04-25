@@ -3,7 +3,6 @@ import { View, ActivityIndicator, StyleSheet } from 'react-native';
 
 import AppStacks from './app';
 import AuthStacks from './auth';
-
 import AuthContext from '../contexts/auth';
 
 export default class Routes extends Component {

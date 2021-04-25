@@ -5,6 +5,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Home from '../screens/home';
 import Problems from '../screens/problems';
 import SettingsStacks from './settings';
+import colors from '../styles/colors';
 
 const AppBottomTab = createMaterialBottomTabNavigator();
 
@@ -13,10 +14,10 @@ export default class AppStacks extends Component {
         return (
             <AppBottomTab.Navigator
                 initialRouteName="Home"
-                activeColor="#f0edf6"
-                inactiveColor="#284958"
+                activeColor={colors.whiteShade}
+                inactiveColor={colors.blueShade}
                 backBehavior="initialRoute"
-                barStyle={{ backgroundColor: '#40738B' }}
+                barStyle={{ backgroundColor: colors.blue }}
             >
                 <AppBottomTab.Screen
                     name="Problems"

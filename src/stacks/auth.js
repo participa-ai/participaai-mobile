@@ -15,7 +15,11 @@ export default class AuthStacks extends Component {
                 initialRouteName="Login"
                 screenOptions={defaultScreenOptions}
             >
-                <AuthStack.Screen name="Login" component={Login} />
+                <AuthStack.Screen
+                    name="Login"
+                    component={Login}
+                    options={{ headerShown: false }}
+                />
                 <AuthStack.Screen name="Signup" component={Signup} />
                 <AuthStack.Screen
                     name="ForgotPassword"
