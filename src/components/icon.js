@@ -20,7 +20,7 @@ import colors from '../styles/colors';
 
 export default class Icon extends Component {
     render() {
-        const { iconFamily, iconName } = this.props;
+        const { iconFamily, iconName, style } = this.props;
         const size = this.props.size ?? 30;
         const color = this.props.color ?? colors.black;
 
@@ -29,7 +29,9 @@ export default class Icon extends Component {
         }
 
         return (
-            <View>{this.renderIcon(iconFamily, iconName, size, color)}</View>
+            <View style={[{ ...style }]}>
+                {this.renderIcon(iconFamily, iconName, size, color)}
+            </View>
         );
     }
 

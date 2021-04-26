@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import {
     StyleSheet,
     Text,
-    TouchableHighlight,
     ScrollView,
     View,
+    TouchableOpacity,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -65,18 +65,21 @@ export default class Login extends Component {
                         secureTextEntry={true}
                     />
 
-                    <TouchableHighlight style={styles.touch}>
+                    <TouchableOpacity
+                        style={styles.touch}
+                        onPress={this.handleForgot}
+                    >
                         <Text style={styles.linkText}>Esqueceu sua senha?</Text>
-                    </TouchableHighlight>
+                    </TouchableOpacity>
 
-                    <FlatButton onPress={this.handleLogin} label="Entrar" />
+                    <FlatButton onPress={this.handleLogin} label="ENTRAR" />
 
                     <Text style={styles.text}>OU</Text>
 
                     <FlatButton
                         secondary
                         onPress={this.handleSignup}
-                        label="Cadastre-se"
+                        label="CADASTRE-SE"
                         style={styles.button}
                     />
                 </ScrollView>
@@ -102,7 +105,7 @@ const styles = StyleSheet.create({
     },
     logo: {
         marginTop: '45%',
-        marginBottom: 50,
+        marginBottom: 75,
     },
     input: {
         marginTop: 25,
@@ -113,7 +116,7 @@ const styles = StyleSheet.create({
         padding: 5,
     },
     linkText: {
-        marginBottom: 0,
+        marginBottom: 10,
         color: colors.orange,
         fontFamily: 'roboto-bold',
     },

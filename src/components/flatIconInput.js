@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import { Dimensions, StyleSheet, TextInput, View } from 'react-native';
+import {
+    Dimensions,
+    RefreshControlBase,
+    StyleSheet,
+    TextInput,
+    View,
+} from 'react-native';
 import { TextInputMask } from 'react-native-masked-text';
 
 import colors from '../styles/colors';
@@ -27,7 +33,11 @@ export default class FlatIconInput extends Component {
             <View style={style}>
                 <View style={componentStyles.view}>
                     {iconFamily && iconName ? (
-                        <Icon iconFamily={iconFamily} iconName={iconName} />
+                        <Icon
+                            iconFamily={iconFamily}
+                            iconName={iconName}
+                            style={componentStyles.icon}
+                        />
                     ) : null}
 
                     {maskType ? (
@@ -40,8 +50,8 @@ export default class FlatIconInput extends Component {
                                 });
                             }}
                             style={componentStyles.textInput}
-                            ref={(input) => {
-                                this.input = input;
+                            ref={(maskInput) => {
+                                this.maskInput = maskInput;
                             }}
                             {...inputProps}
                         />
@@ -60,14 +70,17 @@ export default class FlatIconInput extends Component {
     }
 
     focus() {
-        this.input.focus();
+        if (this.maskInput) {
+            this.maskInput.getElement().focus();
+        } else {
+            this.input.focus();
+        }
     }
 }
 
 const componentStyles = StyleSheet.create({
     view: {
         flexDirection: 'row',
-        padding: 12,
         width: Dimensions.get('screen').width * 0.75,
 
         backgroundColor: colors.white,
@@ -77,14 +90,18 @@ const componentStyles = StyleSheet.create({
         borderWidth: 1,
         borderColor: colors.orange,
     },
+    icon: {
+        paddingVertical: 11,
+        paddingLeft: 12,
+    },
     textInput: {
         flex: 1,
+        padding: 11,
+
         color: colors.black,
         textTransform: 'uppercase',
 
         fontFamily: 'roboto-bold',
         fontSize: 20,
-
-        marginLeft: 10,
     },
 });

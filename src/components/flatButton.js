@@ -5,7 +5,9 @@ import {
     StyleSheet,
     View,
     Dimensions,
+    TouchableHighlight,
 } from 'react-native';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 import colors from '../styles/colors';
 
@@ -22,11 +24,14 @@ export default class FlatButton extends Component {
 
         return (
             <View style={style}>
-                <TouchableOpacity
+                <TouchableHighlight
                     style={[
                         { backgroundColor },
                         secondary ? styles.buttonSecondary : styles.button,
                     ]}
+                    underlayColor={
+                        secondary ? colors.backgroundShade : colors.orangeShade
+                    }
                     onPress={onPress}
                 >
                     <Text
@@ -37,7 +42,7 @@ export default class FlatButton extends Component {
                     >
                         {label}
                     </Text>
-                </TouchableOpacity>
+                </TouchableHighlight>
             </View>
         );
     }
@@ -47,7 +52,7 @@ const styles = StyleSheet.create({
     button: {
         alignItems: 'center',
         backgroundColor: colors.orange,
-        padding: 16,
+        padding: 14,
         borderRadius: 50,
         width: Dimensions.get('screen').width * 0.75,
     },
@@ -55,7 +60,6 @@ const styles = StyleSheet.create({
         color: colors.white,
         fontFamily: 'roboto-bold',
         fontSize: 20,
-        textTransform: 'uppercase',
     },
     buttonSecondary: {
         alignItems: 'center',
@@ -68,6 +72,5 @@ const styles = StyleSheet.create({
         color: colors.blue,
         fontFamily: 'roboto-bold',
         fontSize: 20,
-        textTransform: 'uppercase',
     },
 });
