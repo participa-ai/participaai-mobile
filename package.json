@@ -23,6 +23,7 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-41.0.0.tar.gz",
     "react-native-masked-text": "^1.13.0",
     "react-native-paper": "^4.7.2",
+    "react-native-screens": "~3.0.0",
     "react-native-svg": "12.1.0",
     "react-native-svg-transformer": "^0.14.3",
     "react-native-web": "~0.13.12"
