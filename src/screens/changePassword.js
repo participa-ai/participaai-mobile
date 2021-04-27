@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { ScrollView, View, StyleSheet } from 'react-native';
 import FlatButton from '../components/flatButton';
 import FlatIconInput from '../components/flatIconInput';
@@ -6,67 +6,60 @@ import FlatIconInput from '../components/flatIconInput';
 import colors from '../styles/colors';
 import { globalStyles } from '../styles/global';
 
-export default class ChangePassword extends Component {
-    render() {
-        return (
-            <View style={[globalStyles.container, styles.view]}>
-                <ScrollView
-                    contentContainerStyle={styles.scrollview}
-                    keyboardDismissMode="on-drag"
-                    showsVerticalScrollIndicator={false}
-                >
-                    <FlatIconInput
-                        iconFamily="Ionicons"
-                        iconName="lock-closed"
-                        placeholder="Senha atual"
-                        style={styles.input}
-                        ref={(input) => {
-                            this.inputCurrentPassword = input;
-                        }}
-                        secureTextEntry={true}
-                        onSubmitEditing={() => {
-                            this.inputNewPassword.focus();
-                        }}
-                        blurOnSubmit={false}
-                    />
+export default ChangePassword = () => {
+    const inputNewPassword = React.useRef(null);
+    const inputConfirm = React.useRef(null);
 
-                    <FlatIconInput
-                        iconFamily="Ionicons"
-                        iconName="lock-closed"
-                        placeholder="Nova senha"
-                        style={styles.input}
-                        ref={(input) => {
-                            this.inputNewPassword = input;
-                        }}
-                        secureTextEntry={true}
-                        onSubmitEditing={() => {
-                            this.inputConfirm.focus();
-                        }}
-                        blurOnSubmit={false}
-                    />
+    return (
+        <View style={[globalStyles.container, styles.view]}>
+            <ScrollView
+                contentContainerStyle={styles.scrollview}
+                keyboardDismissMode="on-drag"
+                showsVerticalScrollIndicator={false}
+            >
+                <FlatIconInput
+                    iconFamily="Ionicons"
+                    iconName="lock-closed"
+                    placeholder="Senha atual"
+                    style={styles.input}
+                    secureTextEntry={true}
+                    onSubmitEditing={() => {
+                        inputNewPassword.current.focus();
+                    }}
+                    blurOnSubmit={false}
+                />
 
-                    <FlatIconInput
-                        iconFamily="Ionicons"
-                        iconName="lock-closed"
-                        placeholder="Confirmar nova senha"
-                        style={styles.input}
-                        secureTextEntry={true}
-                        ref={(input) => {
-                            this.inputConfirm = input;
-                        }}
-                    />
+                <FlatIconInput
+                    iconFamily="Ionicons"
+                    iconName="lock-closed"
+                    placeholder="Nova senha"
+                    style={styles.input}
+                    ref={inputNewPassword}
+                    secureTextEntry={true}
+                    onSubmitEditing={() => {
+                        inputConfirm.current.focus();
+                    }}
+                    blurOnSubmit={false}
+                />
 
-                    <FlatButton
-                        style={styles.button}
-                        onPress={this.handleLogin}
-                        label="ALTERAR"
-                        onPress={() => {}}
-                    />
-                </ScrollView>
-            </View>
-        );
-    }
-}
+                <FlatIconInput
+                    iconFamily="Ionicons"
+                    iconName="lock-closed"
+                    placeholder="Confirmar nova senha"
+                    style={styles.input}
+                    secureTextEntry={true}
+                    ref={inputConfirm}
+                />
+
+                <FlatButton
+                    style={styles.button}
+                    label="ALTERAR"
+                    onPress={() => {}}
+                />
+            </ScrollView>
+        </View>
+    );
+};
 
 const styles = StyleSheet.create({
     view: {

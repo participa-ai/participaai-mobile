@@ -1,54 +1,51 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { View, StyleSheet, FlatList } from 'react-native';
 
 import { globalStyles } from '../styles/global';
 import colors from '../styles/colors';
-import AuthContext from '../contexts/auth';
+import { useAuth } from '../contexts/auth';
 import SettingsMenuItem from '../components/settingsMenuItem';
 
-export default class Settings extends Component {
-    static contextType = AuthContext;
+export default Settings = ({ navigation }) => {
+    const { logout } = useAuth();
 
-    handleAbout = () => {
-        this.props.navigation.navigate('About');
+    const handleAbout = () => {
+        navigation.navigate('About');
     };
 
-    handleChangePassword = () => {
-        this.props.navigation.navigate('ChangePassword');
+    const handleChangePassword = () => {
+        navigation.navigate('ChangePassword');
     };
 
-    handleLogout = () => {
-        const { logout } = this.context;
+    const handleLogout = () => {
         logout();
     };
 
-    render() {
-        const menuItens = [
-            { key: 'about', label: 'Sobre', onPress: this.handleAbout },
-            {
-                key: 'changePassword',
-                label: 'Alterar senha',
-                onPress: this.handleChangePassword,
-            },
-            { key: 'logout', label: 'Sair', onPress: this.handleLogout },
-        ];
+    const menuItens = [
+        { key: 'about', label: 'Sobre', onPress: handleAbout },
+        {
+            key: 'changePassword',
+            label: 'Alterar senha',
+            onPress: handleChangePassword,
+        },
+        { key: 'logout', label: 'Sair', onPress: handleLogout },
+    ];
 
-        return (
-            <View style={[globalStyles.container, styles.view]}>
-                <FlatList
-                    style={styles.menuList}
-                    data={menuItens}
-                    renderItem={({ item }) => (
-                        <SettingsMenuItem
-                            label={item.label}
-                            onPress={item.onPress}
-                        />
-                    )}
-                />
-            </View>
-        );
-    }
-}
+    return (
+        <View style={[globalStyles.container, styles.view]}>
+            <FlatList
+                style={styles.menuList}
+                data={menuItens}
+                renderItem={({ item }) => (
+                    <SettingsMenuItem
+                        label={item.label}
+                        onPress={item.onPress}
+                    />
+                )}
+            />
+        </View>
+    );
+};
 
 const styles = StyleSheet.create({
     view: {

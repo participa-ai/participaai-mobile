@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { View, Text, StyleSheet, Button, ScrollView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -7,46 +7,43 @@ import colors from '../styles/colors';
 import FlatButton from '../components/flatButton';
 import Logo from '../components/logo';
 
-export default class RecoveryEmailSent extends Component {
-    handleOk = () => {
-        this.props.navigation.popToTop();
+export default RecoveryEmailSent = ({ navigation }) => {
+    const handleOk = () => {
+        navigation.popToTop();
     };
 
-    render() {
-        return (
-            <View style={globalStyles.container}>
-                <ScrollView
-                    contentContainerStyle={styles.scrollview}
-                    keyboardDismissMode="on-drag"
-                    showsVerticalScrollIndicator={false}
-                >
-                    <Logo style={styles.logo} />
+    return (
+        <View style={globalStyles.container}>
+            <ScrollView
+                contentContainerStyle={styles.scrollview}
+                keyboardDismissMode="on-drag"
+                showsVerticalScrollIndicator={false}
+            >
+                <Logo style={styles.logo} />
 
-                    <Text style={styles.text}>
-                        Nós enviamos para o seu e-mail as instruções para trocar
-                        sua senha. Por favor, verifique seu e-mail!
-                    </Text>
+                <Text style={styles.text}>
+                    Nós enviamos para o seu e-mail as instruções para trocar sua
+                    senha. Por favor, verifique seu e-mail!
+                </Text>
 
-                    <FlatButton
-                        style={styles.button}
-                        onPress={this.handleLogin}
-                        label="Voltar"
-                        onPress={this.handleOk}
-                    />
-                </ScrollView>
-                <LinearGradient
-                    colors={[colors.white, colors.blue]}
-                    locations={[0.3, 1]}
-                    style={[
-                        globalStyles.fixed,
-                        globalStyles.fullscreen,
-                        { zIndex: -1 },
-                    ]}
+                <FlatButton
+                    style={styles.button}
+                    label="Voltar"
+                    onPress={handleOk}
                 />
-            </View>
-        );
-    }
-}
+            </ScrollView>
+            <LinearGradient
+                colors={[colors.white, colors.blue]}
+                locations={[0.3, 1]}
+                style={[
+                    globalStyles.fixed,
+                    globalStyles.fullscreen,
+                    { zIndex: -1 },
+                ]}
+            />
+        </View>
+    );
+};
 
 const styles = StyleSheet.create({
     scrollview: {

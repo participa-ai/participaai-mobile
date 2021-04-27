@@ -1,11 +1,5 @@
 import React, { Component } from 'react';
-import {
-    Dimensions,
-    RefreshControlBase,
-    StyleSheet,
-    TextInput,
-    View,
-} from 'react-native';
+import { Dimensions, StyleSheet, TextInput, View } from 'react-native';
 import { TextInputMask } from 'react-native-masked-text';
 
 import colors from '../styles/colors';
@@ -33,11 +27,9 @@ export default class FlatIconInput extends Component {
             <View style={style}>
                 <View style={componentStyles.view}>
                     {iconFamily && iconName ? (
-                        <Icon
-                            iconFamily={iconFamily}
-                            iconName={iconName}
-                            style={componentStyles.icon}
-                        />
+                        <View style={componentStyles.icon}>
+                            <Icon iconFamily={iconFamily} iconName={iconName} />
+                        </View>
                     ) : null}
 
                     {maskType ? (
@@ -91,8 +83,8 @@ const componentStyles = StyleSheet.create({
         borderColor: colors.orange,
     },
     icon: {
-        paddingVertical: 11,
-        paddingLeft: 12,
+        marginVertical: 11,
+        marginLeft: 12,
     },
     textInput: {
         flex: 1,

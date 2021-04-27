@@ -1,52 +1,44 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
     Text,
-    TouchableOpacity,
     StyleSheet,
     View,
     Dimensions,
     TouchableHighlight,
 } from 'react-native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 import colors from '../styles/colors';
 
-export default class FlatButton extends Component {
-    render() {
-        const {
-            label,
-            color,
-            backgroundColor,
-            secondary,
-            onPress,
-            style,
-        } = this.props;
-
-        return (
-            <View style={style}>
-                <TouchableHighlight
-                    style={[
-                        { backgroundColor },
-                        secondary ? styles.buttonSecondary : styles.button,
-                    ]}
-                    underlayColor={
-                        secondary ? colors.backgroundShade : colors.orangeShade
-                    }
-                    onPress={onPress}
-                >
-                    <Text
-                        style={[
-                            { color },
-                            secondary ? styles.textSecondary : styles.text,
-                        ]}
-                    >
-                        {label}
-                    </Text>
-                </TouchableHighlight>
-            </View>
-        );
-    }
-}
+export default FlatButton = ({
+    label,
+    color,
+    backgroundColor,
+    secondary,
+    onPress,
+    style,
+}) => (
+    <View style={style}>
+        <TouchableHighlight
+            style={[
+                { backgroundColor },
+                secondary ? styles.buttonSecondary : styles.button,
+            ]}
+            underlayColor={
+                secondary ? colors.backgroundShade : colors.orangeShade
+            }
+            onPress={onPress}
+        >
+            <Text
+                style={[
+                    { color },
+                    secondary ? styles.textSecondary : styles.text,
+                ]}
+            >
+                {label}
+            </Text>
+        </TouchableHighlight>
+    </View>
+);
 
 const styles = StyleSheet.create({
     button: {

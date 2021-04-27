@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { View, StyleSheet } from 'react-native';
 
@@ -11,45 +11,43 @@ import ParticipaP from '../assets/images/participa-p.svg';
 
 const SettingsStack = createStackNavigator();
 
-export default class SettingsStacks extends Component {
-    render() {
-        return (
-            <SettingsStack.Navigator
-                initialRouteName="Settings"
-                screenOptions={defaultScreenOptions}
-            >
-                <SettingsStack.Screen
-                    name="Settings"
-                    component={Settings}
-                    options={{
-                        title: 'Configuração',
-                        headerLeft: () => {
-                            return (
-                                <View style={styles.headerLeft}>
-                                    <ParticipaP width={30} height={30} />
-                                </View>
-                            );
-                        },
-                    }}
-                />
-                <SettingsStack.Screen
-                    name="About"
-                    component={About}
-                    options={{
-                        title: 'Sobre',
-                    }}
-                />
-                <SettingsStack.Screen
-                    name="ChangePassword"
-                    component={ChangePassword}
-                    options={{
-                        title: 'Alterar senha',
-                    }}
-                />
-            </SettingsStack.Navigator>
-        );
-    }
-}
+export default SettingsStacks = () => {
+    return (
+        <SettingsStack.Navigator
+            initialRouteName="Settings"
+            screenOptions={defaultScreenOptions}
+        >
+            <SettingsStack.Screen
+                name="Settings"
+                component={Settings}
+                options={{
+                    title: 'Configuração',
+                    headerLeft: () => {
+                        return (
+                            <View style={styles.headerLeft}>
+                                <ParticipaP width={30} height={30} />
+                            </View>
+                        );
+                    },
+                }}
+            />
+            <SettingsStack.Screen
+                name="About"
+                component={About}
+                options={{
+                    title: 'Sobre',
+                }}
+            />
+            <SettingsStack.Screen
+                name="ChangePassword"
+                component={ChangePassword}
+                options={{
+                    title: 'Alterar senha',
+                }}
+            />
+        </SettingsStack.Navigator>
+    );
+};
 
 const defaultScreenOptions = {
     headerTintColor: colors.black,

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import colors from '../styles/colors';
@@ -10,35 +10,33 @@ import BackArrow from '../assets/images/back-arrow.svg';
 
 const AuthStack = createStackNavigator();
 
-export default class AuthStacks extends Component {
-    render() {
-        return (
-            <AuthStack.Navigator
-                initialRouteName="Login"
-                screenOptions={defaultScreenOptions}
-            >
-                <AuthStack.Screen
-                    name="Login"
-                    component={Login}
-                    options={{ headerShown: false }}
-                />
-                <AuthStack.Screen name="Signup" component={Signup} />
-                <AuthStack.Screen
-                    name="ForgotPassword"
-                    component={ForgotPassword}
-                />
-                <AuthStack.Screen
-                    name="RecoveryEmailSent"
-                    component={RecoveryEmailSent}
-                />
-            </AuthStack.Navigator>
-        );
-    }
-}
+export default AuthStacks = () => {
+    return (
+        <AuthStack.Navigator
+            initialRouteName="Login"
+            screenOptions={defaultScreenOptions}
+        >
+            <AuthStack.Screen
+                name="Login"
+                component={Login}
+                options={{ headerShown: false }}
+            />
+            <AuthStack.Screen name="Signup" component={Signup} />
+            <AuthStack.Screen
+                name="ForgotPassword"
+                component={ForgotPassword}
+            />
+            <AuthStack.Screen
+                name="RecoveryEmailSent"
+                component={RecoveryEmailSent}
+            />
+        </AuthStack.Navigator>
+    );
+};
 
 const defaultScreenOptions = {
     title: '',
-    headerTintColor: '#40738B',
+    headerTintColor: colors.blue,
     headerBackImage: ({ tintColor }) => {
         return <BackArrow width={20} height={20} fill={tintColor} />;
     },
@@ -46,7 +44,7 @@ const defaultScreenOptions = {
         backgroundColor: colors.white,
     },
     headerTitleStyle: {
-        fontWeight: 'bold',
+        fontFamily: 'roboto-bold',
     },
     headerLeftContainerStyle: {
         paddingLeft: 10,
