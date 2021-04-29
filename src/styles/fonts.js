@@ -1,4 +1,4 @@
 export default {
     heading: 'roboto-bold',
-    text: 'roboto-text',
+    text: 'roboto-regular',
 };
