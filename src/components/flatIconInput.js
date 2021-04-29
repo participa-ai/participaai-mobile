@@ -3,6 +3,7 @@ import { Dimensions, StyleSheet, TextInput, View } from 'react-native';
 import { TextInputMask } from 'react-native-masked-text';
 
 import colors from '../styles/colors';
+import fonts from '../styles/fonts';
 import Icon from './icon';
 
 export default class FlatIconInput extends Component {
@@ -93,7 +94,7 @@ const componentStyles = StyleSheet.create({
         color: colors.black,
         textTransform: 'uppercase',
 
-        fontFamily: 'roboto-bold',
+        fontFamily: fonts.heading,
         fontSize: 20,
     },
 });

@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 
 import colors from '../styles/colors';
+import fonts from '../styles/fonts';
 
 export default SettingsMenuItem = ({ label, onPress, style }) => {
     return (
@@ -31,7 +32,7 @@ const styles = StyleSheet.create({
     },
     text: {
         color: colors.black,
-        fontFamily: 'roboto-regular',
+        fontFamily: fonts.text,
         fontSize: 20,
     },
 });

@@ -4,6 +4,8 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 import { globalStyles } from '../styles/global';
 import colors from '../styles/colors';
+import fonts from '../styles/fonts';
+
 import FlatIconInput from '../components/flatIconInput';
 import Logo from '../components/logo';
 import FlatButton from '../components/flatButton';
@@ -67,7 +69,7 @@ const styles = StyleSheet.create({
         marginBottom: 40,
     },
     text: {
-        fontFamily: 'roboto-regular',
+        fontFamily: fonts.text,
         fontSize: 20,
         textAlign: 'center',
 

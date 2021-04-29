@@ -3,11 +3,14 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { View, StyleSheet } from 'react-native';
 
 import colors from '../styles/colors';
+import fonts from '../styles/fonts';
+
+import BackArrow from '../assets/images/back-arrow.svg';
+import ParticipaP from '../assets/images/participa-p.svg';
+
 import Settings from '../screens/settings';
 import About from '../screens/about';
 import ChangePassword from '../screens/changePassword';
-import BackArrow from '../assets/images/back-arrow.svg';
-import ParticipaP from '../assets/images/participa-p.svg';
 
 const SettingsStack = createStackNavigator();
 
@@ -66,7 +69,7 @@ const defaultScreenOptions = {
         backgroundColor: colors.white,
     },
     headerTitleStyle: {
-        fontFamily: 'roboto-bold',
+        fontFamily: fonts.heading,
         fontSize: 24,
     },
     headerTitleContainerStyle: {

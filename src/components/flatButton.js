@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 
 import colors from '../styles/colors';
+import fonts from '../styles/fonts';
 
 export default FlatButton = ({
     label,
@@ -50,7 +51,7 @@ const styles = StyleSheet.create({
     },
     text: {
         color: colors.white,
-        fontFamily: 'roboto-bold',
+        fontFamily: fonts.heading,
         fontSize: 20,
     },
     buttonSecondary: {
@@ -62,7 +63,7 @@ const styles = StyleSheet.create({
     },
     textSecondary: {
         color: colors.blue,
-        fontFamily: 'roboto-bold',
+        fontFamily: fonts.heading,
         fontSize: 20,
     },
 });

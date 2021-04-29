@@ -10,8 +10,9 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 import { globalStyles } from '../styles/global';
 import colors from '../styles/colors';
-import { useAuth } from '../contexts/auth';
+import fonts from '../styles/fonts';
 
+import { useAuth } from '../contexts/auth';
 import FlatButton from '../components/flatButton';
 import Logo from '../components/logo';
 import FlatIconInput from '../components/flatIconInput';
@@ -112,7 +113,7 @@ const styles = StyleSheet.create({
     linkText: {
         marginBottom: 10,
         color: colors.orange,
-        fontFamily: 'roboto-bold',
+        fontFamily: fonts.heading,
     },
     button: {
         paddingBottom: 20,
@@ -120,7 +121,7 @@ const styles = StyleSheet.create({
     text: {
         marginVertical: 10,
         color: colors.white,
-        fontFamily: 'roboto-bold',
+        fontFamily: fonts.heading,
         textTransform: 'uppercase',
     },
 });

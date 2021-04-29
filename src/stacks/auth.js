@@ -2,11 +2,14 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import colors from '../styles/colors';
+import fonts from '../styles/fonts';
+
+import BackArrow from '../assets/images/back-arrow.svg';
+
 import Login from '../screens/login';
 import Signup from '../screens/signup';
 import ForgotPassword from '../screens/forgotPassword';
 import RecoveryEmailSent from '../screens/recoveryEmailSent';
-import BackArrow from '../assets/images/back-arrow.svg';
 
 const AuthStack = createStackNavigator();
 
@@ -44,7 +47,7 @@ const defaultScreenOptions = {
         backgroundColor: colors.white,
     },
     headerTitleStyle: {
-        fontFamily: 'roboto-bold',
+        fontFamily: fonts.heading,
     },
     headerLeftContainerStyle: {
         paddingLeft: 10,

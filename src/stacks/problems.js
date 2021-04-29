@@ -3,8 +3,11 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { View, StyleSheet } from 'react-native';
 
 import colors from '../styles/colors';
+import fonts from '../styles/fonts';
+
 import BackArrow from '../assets/images/back-arrow.svg';
 import ParticipaP from '../assets/images/participa-p.svg';
+
 import Problems from '../screens/problems';
 import ProblemDetails from '../screens/problemDetails';
 
@@ -56,7 +59,7 @@ const defaultScreenOptions = {
         backgroundColor: colors.white,
     },
     headerTitleStyle: {
-        fontFamily: 'roboto-bold',
+        fontFamily: fonts.heading,
         fontSize: 24,
     },
     headerTitleContainerStyle: {
