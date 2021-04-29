@@ -6,9 +6,9 @@ import { globalStyles } from '../styles/global';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 
-import FlatIconInput from '../components/flatIconInput';
-import Logo from '../components/logo';
-import FlatButton from '../components/flatButton';
+import FlatIconInput from '../components/FlatIconInput';
+import Logo from '../components/Logo';
+import FlatButton from '../components/FlatButton';
 
 export default ForgotPassword = ({ navigation }) => {
     const handleRequestRecovery = () => {

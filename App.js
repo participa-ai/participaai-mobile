@@ -2,7 +2,7 @@ import React from 'react';
 import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
 
-import Index from './src/index';
+import Index from './src/Index';
 
 export default App = () => {
     const [isReady, setIsReady] = React.useState(false);

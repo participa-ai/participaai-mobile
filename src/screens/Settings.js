@@ -3,8 +3,8 @@ import { View, StyleSheet, FlatList } from 'react-native';
 
 import { globalStyles } from '../styles/global';
 import colors from '../styles/colors';
-import { useAuth } from '../contexts/auth';
-import SettingsMenuItem from '../components/settingsMenuItem';
+import { useAuth } from '../contexts/AuthContext';
+import SettingsMenuItem from '../components/SettingsMenuItem';
 
 export default Settings = ({ navigation }) => {
     const { logout } = useAuth();

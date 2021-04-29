@@ -4,9 +4,9 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 import { globalStyles } from '../styles/global';
 import colors from '../styles/colors';
-import FlatButton from '../components/flatButton';
-import FlatIconInput from '../components/flatIconInput';
-import Logo from '../components/logo';
+import FlatButton from '../components/FlatButton';
+import FlatIconInput from '../components/FlatIconInput';
+import Logo from '../components/Logo';
 
 export default Signup = () => {
     const cpfInput = React.useRef(null);

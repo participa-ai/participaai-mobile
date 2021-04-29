@@ -12,10 +12,10 @@ import { globalStyles } from '../styles/global';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 
-import { useAuth } from '../contexts/auth';
-import FlatButton from '../components/flatButton';
-import Logo from '../components/logo';
-import FlatIconInput from '../components/flatIconInput';
+import { useAuth } from '../contexts/AuthContext';
+import FlatButton from '../components/FlatButton';
+import Logo from '../components/Logo';
+import FlatIconInput from '../components/FlatIconInput';
 
 export default Login = ({ navigation }) => {
     const { login } = useAuth();

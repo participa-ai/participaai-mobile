@@ -6,8 +6,8 @@ import { globalStyles } from '../styles/global';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 
-import FlatButton from '../components/flatButton';
-import Logo from '../components/logo';
+import FlatButton from '../components/FlatButton';
+import Logo from '../components/Logo';
 
 export default RecoveryEmailSent = ({ navigation }) => {
     const handleOk = () => {

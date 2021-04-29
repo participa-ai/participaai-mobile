@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScrollView, View, StyleSheet } from 'react-native';
-import FlatButton from '../components/flatButton';
-import FlatIconInput from '../components/flatIconInput';
+import FlatButton from '../components/FlatButton';
+import FlatIconInput from '../components/FlatIconInput';
 
 import colors from '../styles/colors';
 import { globalStyles } from '../styles/global';

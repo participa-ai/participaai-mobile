@@ -8,9 +8,9 @@ import fonts from '../styles/fonts';
 import BackArrow from '../assets/images/back-arrow.svg';
 import ParticipaP from '../assets/images/participa-p.svg';
 
-import Settings from '../screens/settings';
-import About from '../screens/about';
-import ChangePassword from '../screens/changePassword';
+import Settings from '../screens/Settings';
+import About from '../screens/About';
+import ChangePassword from '../screens/ChangePassword';
 
 const SettingsStack = createStackNavigator();
 

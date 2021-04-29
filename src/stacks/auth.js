@@ -6,10 +6,10 @@ import fonts from '../styles/fonts';
 
 import BackArrow from '../assets/images/back-arrow.svg';
 
-import Login from '../screens/login';
-import Signup from '../screens/signup';
-import ForgotPassword from '../screens/forgotPassword';
-import RecoveryEmailSent from '../screens/recoveryEmailSent';
+import Login from '../screens/Login';
+import Signup from '../screens/Signup';
+import ForgotPassword from '../screens/ForgotPassword';
+import RecoveryEmailSent from '../screens/RecoveryEmailSent';
 
 const AuthStack = createStackNavigator();
 

@@ -8,8 +8,8 @@ import fonts from '../styles/fonts';
 import BackArrow from '../assets/images/back-arrow.svg';
 import ParticipaP from '../assets/images/participa-p.svg';
 
-import Problems from '../screens/problems';
-import ProblemDetails from '../screens/problemDetails';
+import Problems from '../screens/Problems';
+import ProblemDetails from '../screens/ProblemDetails';
 
 const SettingsStack = createStackNavigator();
 

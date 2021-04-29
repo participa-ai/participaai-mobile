@@ -3,7 +3,7 @@ import { View, ActivityIndicator, StyleSheet } from 'react-native';
 
 import AppStacks from './app';
 import AuthStacks from './auth';
-import { useAuth } from '../contexts/auth';
+import { useAuth } from '../contexts/AuthContext';
 
 export default Routes = () => {
     const { authenticated, loading } = useAuth();

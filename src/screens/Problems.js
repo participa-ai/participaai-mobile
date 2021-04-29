@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, FlatList } from 'react-native';
-import ProblemCard from '../components/problemCard';
+import ProblemCard from '../components/ProblemCard';
 
 import colors from '../styles/colors';
 import { globalStyles } from '../styles/global';

@@ -4,7 +4,7 @@ import { TextInputMask } from 'react-native-masked-text';
 
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
-import Icon from './icon';
+import Icon from './Icon';
 
 export default class FlatIconInput extends Component {
     constructor(props) {
