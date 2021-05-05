@@ -34,35 +34,28 @@ export default Icon = ({ iconFamily, iconName, style, ...props }) => {
     );
 };
 
+// See icons at: https://icons.expo.fyi/
+
 const renderIcon = (iconFamily, iconName, size, color) => {
     switch (iconFamily) {
         case 'AntDesign':
             return <AntDesign name={iconName} size={size} color={color} />;
-            break;
         case 'Entypo':
             return <Entypo name={iconName} size={size} color={color} />;
-            break;
         case 'EvilIcons':
             return <EvilIcons name={iconName} size={size} color={color} />;
-            break;
         case 'Feather':
             return <Feather name={iconName} size={size} color={color} />;
-            break;
         case 'FontAwesome':
             return <FontAwesome name={iconName} size={size} color={color} />;
-            break;
         case 'FontAwesome5':
             return <FontAwesome5 name={iconName} size={size} color={color} />;
-            break;
         case 'Fontisto':
             return <Fontisto name={iconName} size={size} color={color} />;
-            break;
         case 'Foundation':
             return <Foundation name={iconName} size={size} color={color} />;
-            break;
         case 'Ionicons':
             return <Ionicons name={iconName} size={size} color={color} />;
-            break;
         case 'MaterialCommunityIcons':
             return (
                 <MaterialCommunityIcons
@@ -71,21 +64,16 @@ const renderIcon = (iconFamily, iconName, size, color) => {
                     color={color}
                 />
             );
-            break;
         case 'MaterialIcons':
             return <MaterialIcons name={iconName} size={size} color={color} />;
-            break;
         case 'Octicons':
             return <Octicons name={iconName} size={size} color={color} />;
-            break;
         case 'SimpleLineIcons':
             return (
                 <SimpleLineIcons name={iconName} size={size} color={color} />
             );
-            break;
         case 'Zocial':
             return <Zocial name={iconName} size={size} color={color} />;
-            break;
         default:
             return null;
     }

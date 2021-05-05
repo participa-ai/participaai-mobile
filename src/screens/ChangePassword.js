@@ -66,15 +66,15 @@ const styles = StyleSheet.create({
         backgroundColor: colors.background,
     },
     scrollview: {
-        marginTop: '35%',
+        marginTop: 50,
         justifyContent: 'flex-start',
         alignItems: 'center',
         backgroundColor: 'transparent',
     },
     input: {
-        marginTop: 12,
+        marginBottom: 12,
     },
     button: {
-        marginTop: 50,
+        marginTop: 35,
     },
 });

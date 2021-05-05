@@ -66,25 +66,24 @@ const defaultScreenOptions = {
         return <View style={styles.headerLeft}></View>;
     },
     headerStyle: {
-        backgroundColor: colors.white,
+        backgroundColor: colors.background,
+        borderBottomWidth: 1,
+        borderStyle: 'solid',
+        borderBottomColor: colors.orange,
     },
     headerTitleStyle: {
         fontFamily: fonts.heading,
         fontSize: 24,
     },
     headerTitleContainerStyle: {
-        borderBottomWidth: 1,
-        borderStyle: 'solid',
-        borderColor: colors.orange,
         padding: 11,
     },
     headerLeftContainerStyle: {
-        paddingLeft: 5,
-        borderBottomWidth: 1,
-        borderStyle: 'solid',
-        borderColor: colors.orange,
+        paddingLeft: 0,
     },
-    headerTransparent: true,
+    cardStyle: {
+        backgroundColor: colors.background,
+    },
 };
 
 const styles = StyleSheet.create({

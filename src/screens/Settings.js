@@ -53,7 +53,6 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
     },
     menuList: {
-        marginTop: '25%',
         flex: 1,
     },
 });

@@ -2,7 +2,7 @@ import React from 'react';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import Home from '../screens/Home';
+import HomeStack from './home';
 import ProblemsStack from './problems';
 import SettingsStacks from './settings';
 import colors from '../styles/colors';
@@ -12,12 +12,26 @@ const AppBottomTab = createMaterialBottomTabNavigator();
 export default AppStacks = () => {
     return (
         <AppBottomTab.Navigator
-            initialRouteName="Home"
+            initialRouteName="HomeStack"
             activeColor={colors.whiteShade}
             inactiveColor={colors.blueShade}
             backBehavior="initialRoute"
             barStyle={{ backgroundColor: colors.blue }}
         >
+            <AppBottomTab.Screen
+                name="HomeStack"
+                component={HomeStack}
+                options={{
+                    tabBarLabel: 'Início',
+                    tabBarIcon: ({ color }) => (
+                        <MaterialCommunityIcons
+                            name="home"
+                            color={color}
+                            size={26}
+                        />
+                    ),
+                }}
+            />
             <AppBottomTab.Screen
                 name="ProblemsStack"
                 component={ProblemsStack}
@@ -26,20 +40,6 @@ export default AppStacks = () => {
                     tabBarIcon: ({ color }) => (
                         <MaterialCommunityIcons
                             name="format-list-bulleted"
-                            color={color}
-                            size={26}
-                        />
-                    ),
-                }}
-            />
-            <AppBottomTab.Screen
-                name="Home"
-                component={Home}
-                options={{
-                    tabBarLabel: 'Início',
-                    tabBarIcon: ({ color }) => (
-                        <MaterialCommunityIcons
-                            name="home"
                             color={color}
                             size={26}
                         />

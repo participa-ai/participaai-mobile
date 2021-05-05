@@ -1,20 +1,31 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
     Text,
     TouchableOpacity,
     StyleSheet,
     View,
     Dimensions,
+    Image,
 } from 'react-native';
 
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 
-export default ProblemCard = ({ label, onPress, style }) => {
+export default ProblemCard = ({ data, onPress, style }) => {
     return (
         <View style={style}>
             <TouchableOpacity style={styles.touchableOpacity} onPress={onPress}>
-                <Text style={styles.text}>{label}</Text>
+                <View style={styles.content}>
+                    <View style={styles.imageContainer}>
+                        <Image
+                            style={styles.image}
+                            source={{ uri: data.foto.url }}
+                        />
+                    </View>
+                    <Text style={styles.text} numberOfLines={6}>
+                        {data.descricao}
+                    </Text>
+                </View>
             </TouchableOpacity>
         </View>
     );
@@ -22,14 +33,32 @@ export default ProblemCard = ({ label, onPress, style }) => {
 
 const styles = StyleSheet.create({
     touchableOpacity: {
-        padding: 30,
+        flex: 1,
+        padding: 15,
 
         backgroundColor: colors.white,
-        borderRadius: 25,
+        borderRadius: 7,
+    },
+    content: {
+        flex: 1,
+        flexDirection: 'row',
+    },
+    imageContainer: {
+        borderRadius: 7,
+        backgroundColor: 'black',
+        marginRight: 15,
+    },
+    image: {
+        height: 132,
+        width: 132,
+        resizeMode: 'cover',
+        borderRadius: 7,
     },
     text: {
+        flex: 1,
         color: colors.black,
         fontFamily: fonts.text,
-        fontSize: 20,
+        fontSize: 17,
+        textAlignVertical: 'center',
     },
 });

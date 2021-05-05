@@ -1,6 +1,6 @@
 import React from 'react';
+import { StyleSheet, View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { View, StyleSheet } from 'react-native';
 
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
@@ -8,37 +8,30 @@ import fonts from '../styles/fonts';
 import BackArrow from '../assets/images/back-arrow.svg';
 import ParticipaP from '../assets/images/participa-p.svg';
 
-import Problems from '../screens/Problems';
-import ProblemDetails from '../screens/ProblemDetails';
+import Home from '../screens/Home';
+import NewProblem from '../screens/NewProblem';
 
-const SettingsStack = createStackNavigator();
+const HomeStack = createStackNavigator();
 
-export default SettingsStacks = () => {
+export default HomeStacks = () => {
     return (
-        <SettingsStack.Navigator
-            initialRouteName="Settings"
+        <HomeStack.Navigator
+            initialRouteName="Home"
             screenOptions={defaultScreenOptions}
         >
-            <SettingsStack.Screen
-                name="Problems"
-                component={Problems}
-                options={{
-                    title: 'Problemas',
-                    headerLeft: () => {
-                        return (
-                            <View style={styles.headerLeft}>
-                                <ParticipaP width={30} height={30} />
-                            </View>
-                        );
-                    },
-                }}
-            />
-            <SettingsStack.Screen
-                name="ProblemDetails"
-                component={ProblemDetails}
+            <HomeStack.Screen
+                name="Home"
+                component={Home}
                 options={{ headerShown: false }}
             />
-        </SettingsStack.Navigator>
+            <HomeStack.Screen
+                name="NewProblem"
+                component={NewProblem}
+                options={{
+                    title: 'Novo problema',
+                }}
+            />
+        </HomeStack.Navigator>
     );
 };
 
