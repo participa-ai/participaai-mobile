@@ -7,6 +7,8 @@ import {
     TouchableOpacity,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Formik } from 'formik';
+import * as yup from 'yup';
 
 import { globalStyles } from '../styles/global';
 import colors from '../styles/colors';
@@ -21,8 +23,8 @@ export default Login = ({ navigation }) => {
     const { login } = useAuth();
     const passwordInput = React.useRef(null);
 
-    const handleLogin = () => {
-        login();
+    const handleLogin = (loginInfo) => {
+        login(loginInfo.cpf, loginInfo.password);
     };
 
     const handleForgot = () => {
@@ -35,50 +37,81 @@ export default Login = ({ navigation }) => {
 
     return (
         <View style={globalStyles.container}>
-            <ScrollView
-                contentContainerStyle={styles.scrollview}
-                keyboardDismissMode="on-drag"
-                showsVerticalScrollIndicator={false}
+            <Formik
+                initialValues={{ cpf: '444.652.000-80', password: '123456' }}
+                // validationSchema={loginSchema}
+                onSubmit={(values, actions) => {
+                    handleLogin(values);
+                }}
             >
-                <Logo style={styles.logo} />
+                {(formikProps) => (
+                    <ScrollView
+                        contentContainerStyle={styles.scrollview}
+                        keyboardDismissMode="on-drag"
+                        showsVerticalScrollIndicator={false}
+                    >
+                        <Logo style={styles.logo} />
 
-                <FlatIconInput
-                    iconFamily="Ionicons"
-                    iconName="person-circle"
-                    placeholder="CPF"
-                    keyboardType="numeric"
-                    maskType="cpf"
-                    style={styles.input}
-                    onSubmitEditing={() => {
-                        passwordInput.current.focus();
-                    }}
-                    blurOnSubmit={false}
-                />
+                        <FlatIconInput
+                            iconFamily="Ionicons"
+                            iconName="person-circle"
+                            placeholder="CPF"
+                            keyboardType="numeric"
+                            maskType="cpf"
+                            style={styles.input}
+                            onSubmitEditing={() => {
+                                passwordInput.current.focus();
+                            }}
+                            blurOnSubmit={false}
+                            onChangeText={formikProps.handleChange('cpf')}
+                            value={formikProps.values.cpf}
+                            onBlur={formikProps.handleBlur('cpf')}
+                        />
+                        {/* <Text style={globalStyles.errorText}>
+                            {formikProps.touched.cpf && formikProps.errors.cpf}
+                        </Text> */}
 
-                <FlatIconInput
-                    iconFamily="Ionicons"
-                    iconName="lock-closed"
-                    placeholder="Senha"
-                    style={styles.input}
-                    ref={passwordInput}
-                    secureTextEntry={true}
-                />
+                        <FlatIconInput
+                            iconFamily="Ionicons"
+                            iconName="lock-closed"
+                            placeholder="Senha"
+                            style={styles.input}
+                            ref={passwordInput}
+                            secureTextEntry={true}
+                            onChangeText={formikProps.handleChange('password')}
+                            value={formikProps.values.password}
+                            onBlur={formikProps.handleBlur('password')}
+                        />
+                        {/* <Text style={globalStyles.errorText}>
+                            {formikProps.touched.password &&
+                                formikProps.errors.password}
+                        </Text> */}
 
-                <TouchableOpacity style={styles.touch} onPress={handleForgot}>
-                    <Text style={styles.linkText}>Esqueceu sua senha?</Text>
-                </TouchableOpacity>
+                        <TouchableOpacity
+                            style={styles.touch}
+                            onPress={handleForgot}
+                        >
+                            <Text style={styles.linkText}>
+                                Esqueceu sua senha?
+                            </Text>
+                        </TouchableOpacity>
 
-                <FlatButton onPress={handleLogin} label="ENTRAR" />
+                        <FlatButton
+                            onPress={formikProps.handleSubmit}
+                            label="ENTRAR"
+                        />
 
-                <Text style={styles.text}>OU</Text>
+                        <Text style={styles.text}>OU</Text>
 
-                <FlatButton
-                    secondary
-                    onPress={handleSignup}
-                    label="CADASTRE-SE"
-                    style={styles.button}
-                />
-            </ScrollView>
+                        <FlatButton
+                            secondary
+                            onPress={handleSignup}
+                            label="CADASTRE-SE"
+                            style={styles.button}
+                        />
+                    </ScrollView>
+                )}
+            </Formik>
             <LinearGradient
                 colors={[colors.white, colors.blue]}
                 locations={[0.3, 1]}
@@ -124,4 +157,9 @@ const styles = StyleSheet.create({
         fontFamily: fonts.heading,
         textTransform: 'uppercase',
     },
+});
+
+const loginSchema = yup.object({
+    cpf: yup.string().required().label('CPF'),
+    password: yup.string().required().label('Senha'),
 });

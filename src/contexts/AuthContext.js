@@ -41,12 +41,9 @@ export const AuthProvider = ({ children }) => {
             return;
         }
 
-        setToken(response.token);
+        setToken(response.data.token);
 
-        await AsyncStorage.setItem(
-            config.asyncStorageKeys.token,
-            response.token
-        );
+        await AsyncStorage.setItem(config.asyncStorageKeys.token, token);
     }
 
     function logout() {
