@@ -1,6 +1,9 @@
 import React, { useContext } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
+import config from '../config';
 import * as auth from '../services/auth';
+import { Alert } from 'react-native';
 
 const AuthContext = React.createContext({ authenticated: false, token: '' });
 
@@ -12,7 +15,9 @@ export const AuthProvider = ({ children }) => {
         async function loadStorageData() {
             let storageToken;
             try {
-                storageToken = await AsyncStorage.getItem('@participaai:token');
+                storageToken = await AsyncStorage.getItem(
+                    config.asyncStorageKeys.token
+                );
             } catch (e) {
                 console.log(e);
             }
@@ -28,11 +33,20 @@ export const AuthProvider = ({ children }) => {
         loadStorageData();
     }, []);
 
-    async function login() {
-        const response = await auth.Signin();
+    async function login(cpf, senha) {
+        const response = await auth.login(cpf, senha);
+
+        if (!response.sucess) {
+            Alert.alert('Ops', response.data.message);
+            return;
+        }
+
         setToken(response.token);
 
-        await AsyncStorage.setItem('@participaai:token', response.token);
+        await AsyncStorage.setItem(
+            config.asyncStorageKeys.token,
+            response.token
+        );
     }
 
     function logout() {
