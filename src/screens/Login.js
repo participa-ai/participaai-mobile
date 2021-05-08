@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     StyleSheet,
     Text,
@@ -20,11 +20,14 @@ import Logo from '../components/Logo';
 import FlatIconInput from '../components/FlatIconInput';
 
 export default Login = ({ navigation }) => {
+    const [isWaiting, setIsWaiting] = useState(false);
     const { login } = useAuth();
     const passwordInput = React.useRef(null);
 
-    const handleLogin = (loginInfo) => {
-        login(loginInfo.cpf, loginInfo.password);
+    const handleLogin = async (loginInfo) => {
+        setIsWaiting(true);
+        if (!(await login(loginInfo.cpf, loginInfo.password)))
+            setIsWaiting(false);
     };
 
     const handleForgot = () => {
@@ -99,6 +102,8 @@ export default Login = ({ navigation }) => {
                         <FlatButton
                             onPress={formikProps.handleSubmit}
                             label="ENTRAR"
+                            isWaiting={isWaiting}
+                            disabled={isWaiting}
                         />
 
                         <Text style={styles.text}>OU</Text>

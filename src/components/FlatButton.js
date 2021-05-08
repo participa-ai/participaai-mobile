@@ -9,6 +9,7 @@ import {
 
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
+import Spinner from './Spinner';
 
 export default FlatButton = ({
     label,
@@ -16,6 +17,8 @@ export default FlatButton = ({
     backgroundColor,
     secondary,
     onPress,
+    disabled,
+    isWaiting,
     style,
 }) => (
     <View style={style}>
@@ -28,15 +31,20 @@ export default FlatButton = ({
                 secondary ? colors.backgroundShade : colors.orangeShade
             }
             onPress={onPress}
+            disabled={disabled}
         >
-            <Text
-                style={[
-                    { color },
-                    secondary ? styles.textSecondary : styles.text,
-                ]}
-            >
-                {label}
-            </Text>
+            {isWaiting ? (
+                <Spinner />
+            ) : (
+                <Text
+                    style={[
+                        { color },
+                        secondary ? styles.textSecondary : styles.text,
+                    ]}
+                >
+                    {label}
+                </Text>
+            )}
         </TouchableHighlight>
     </View>
 );

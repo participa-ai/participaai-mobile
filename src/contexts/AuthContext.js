@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import config from '../config';
@@ -8,8 +8,8 @@ import { Alert } from 'react-native';
 const AuthContext = React.createContext({ authenticated: false, token: '' });
 
 export const AuthProvider = ({ children }) => {
-    const [token, setToken] = React.useState('');
-    const [loading, setLoading] = React.useState(true);
+    const [token, setToken] = useState('');
+    const [loading, setLoading] = useState(true);
 
     React.useEffect(() => {
         async function loadStorageData() {
@@ -38,12 +38,17 @@ export const AuthProvider = ({ children }) => {
 
         if (!response.sucess) {
             Alert.alert('Ops', response.data.message);
-            return;
+            return false;
         }
 
-        setToken(response.data.token);
-
-        await AsyncStorage.setItem(config.asyncStorageKeys.token, token);
+        if (response.data.token) {
+            setToken(response.data.token);
+            await AsyncStorage.setItem(
+                config.asyncStorageKeys.token,
+                response.data.token
+            );
+            return true;
+        }
     }
 
     function logout() {
