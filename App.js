@@ -14,7 +14,7 @@ export default App = () => {
             'roboto-bold': require('./src/assets/fonts/Roboto-Bold.ttf'),
         });
     }
-
+    
     if (!isReady) {
         return (
             <AppLoading

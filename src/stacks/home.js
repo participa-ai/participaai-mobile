@@ -10,6 +10,7 @@ import ParticipaP from '../assets/images/participa-p.svg';
 
 import Home from '../screens/Home';
 import NewProblem from '../screens/NewProblem';
+import CameraScreen from '../screens/CameraScreen';
 
 const HomeStack = createStackNavigator();
 
@@ -30,6 +31,10 @@ export default HomeStacks = () => {
                 options={{
                     title: 'Novo problema',
                 }}
+            />
+            <HomeStack.Screen
+                name="CameraScreen"
+                component={CameraScreen}
             />
         </HomeStack.Navigator>
     );
