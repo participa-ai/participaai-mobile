@@ -1,11 +1,13 @@
-// FAKE AUTH SERVICE
+import api from './api';
+import { resolve } from './resolve';
 
-export function Signin() {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve({
-                token: 'ae5rj4a6t4j6dty4j36s84rts',
-            });
-        }, 10);
+const authUrl = '/autenticacao';
+
+export async function login(cpf, senha) {
+    const body = JSON.stringify({
+        cpf,
+        senha,
     });
+
+    return await resolve(api.post(`${authUrl}/login`, body));
 }

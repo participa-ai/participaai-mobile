@@ -1,18 +1,23 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
+import config from '../config';
 import * as auth from '../services/auth';
+import { Alert } from 'react-native';
 
 const AuthContext = React.createContext({ authenticated: false, token: '' });
 
 export const AuthProvider = ({ children }) => {
-    const [token, setToken] = React.useState('');
-    const [loading, setLoading] = React.useState(true);
+    const [token, setToken] = useState('');
+    const [loading, setLoading] = useState(true);
 
     React.useEffect(() => {
         async function loadStorageData() {
             let storageToken;
             try {
-                storageToken = await AsyncStorage.getItem('@participaai:token');
+                storageToken = await AsyncStorage.getItem(
+                    config.asyncStorageKeys.token
+                );
             } catch (e) {
                 console.log(e);
             }
@@ -28,11 +33,22 @@ export const AuthProvider = ({ children }) => {
         loadStorageData();
     }, []);
 
-    async function login() {
-        const response = await auth.Signin();
-        setToken(response.token);
+    async function login(cpf, senha) {
+        const response = await auth.login(cpf, senha);
 
-        await AsyncStorage.setItem('@participaai:token', response.token);
+        if (!response.sucess) {
+            Alert.alert('Ops', response.data.message);
+            return false;
+        }
+
+        if (response.data.token) {
+            setToken(response.data.token);
+            await AsyncStorage.setItem(
+                config.asyncStorageKeys.token,
+                response.data.token
+            );
+            return true;
+        }
     }
 
     function logout() {
