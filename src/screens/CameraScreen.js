@@ -30,7 +30,6 @@ export default CameraScreen = ({ navigation, route }) => {
     function takePicture() {
         if (camera) {
             fadeOutAndIn();
-            console.log(camera)
 
             camera.takePictureAsync()
                 .then(resp => {

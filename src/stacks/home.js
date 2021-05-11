@@ -35,6 +35,9 @@ export default HomeStacks = () => {
             <HomeStack.Screen
                 name="CameraScreen"
                 component={CameraScreen}
+                options={{
+                    title: 'Tire uma foto do problema'
+                }}
             />
         </HomeStack.Navigator>
     );

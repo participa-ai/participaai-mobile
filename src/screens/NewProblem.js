@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Dimensions, TouchableOpacity, View, Text, TextInput, Button, StyleSheet, SafeAreaView, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { globalStyles } from '../styles/global';
 import DropDownPicker from 'react-native-dropdown-picker';
@@ -6,7 +6,7 @@ import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 import { FontAwesome } from '@expo/vector-icons';
 
-export default NewProblem = ({ navigation }) => {
+export default NewProblem = ({ navigation, route }) => {
     const [base64Image, setBase64Image] = useState(null);
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(null);
@@ -14,6 +14,11 @@ export default NewProblem = ({ navigation }) => {
         { label: 'Semáforo queimado', value: 'Semáforo queimado' },
         { label: 'Buraco na via', value: 'Buraco na via' }
     ]);
+    const [endereco, setEndereco] = useState('');
+
+    useEffect(() => {
+        setEndereco('latitude: ' + String(route.params.latitude) + ', \n longitude: ' + String(route.params.longitude));
+    }, []);
 
     // TODO: Carregar as categorias, usando useEffect, chamando a API
 
@@ -38,7 +43,7 @@ export default NewProblem = ({ navigation }) => {
             <KeyboardAvoidingView>
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                     <View style={styles.form}>
-                        <Text>Endereço</Text>
+                        <Text>{endereco}</Text>
                         <DropDownPicker
                             open={open}
                             value={value}
