@@ -75,161 +75,74 @@ const data = [
     {
         _id: '1',
         usuario: '234234',
-        categoria: 'Lorem ipsum',
+        categoria: {
+            nome: 'Lorem Ipsum',
+        },
         descricao:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque mollis, risus eu sollicitudin aliquet, libero elit au vulputate nibh venenatis orci vestibulum viverra. Vivamus.  ',
         localizacao: {
-            type: 'Feature',
-            properties: {},
-            geometry: {
-                type: 'Point',
-                coordinates: [-46.5582212805748, -22.948336135223936],
-            },
+            type: 'Point',
+            coordinates: [-46.5582212805748, -22.948336135223936],
         },
         foto: { nome: 'fotoTeste', url: 'https://picsum.photos/600' },
         status: 'ABERTO',
-        resposta: { descricao: '', data: Date.now(), usuario: '' },
-        dataCriacao: Date.now(),
+        resposta: {},
+        dataCriacao: new Date(),
     },
     {
         _id: '2',
         usuario: '234234',
-        categoria: 'Lorem ipsum',
+        categoria: {
+            nome: 'Lorem Ipsum',
+        },
         descricao:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis sodales semper. Ut vulputate nibh venenatis orci vestibulum viverra. Vivamus.  ',
         localizacao: {
-            type: 'Feature',
-            properties: {},
-            geometry: {
-                type: 'Point',
-                coordinates: [-46.5582212805748, -22.948336135223936],
-            },
+            type: 'Point',
+            coordinates: [-46.5582212805748, -22.948336135223936],
         },
         foto: { nome: 'fotoTeste', url: 'https://picsum.photos/600/350' },
         status: 'ANALISANDO',
-        resposta: { descricao: '', data: Date.now(), usuario: '' },
-        dataCriacao: Date.now(),
+        resposta: {},
+        dataCriacao: new Date(),
     },
     {
         _id: '3',
         usuario: '234234',
-        categoria: 'Lorem ipsum',
+        categoria: {
+            nome: 'Lorem Ipsum',
+        },
         descricao:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis sodales semper. Ut vulputate nibh venenatis orci vestibulum viverra. Vivamus.  ',
         localizacao: {
-            type: 'Feature',
-            properties: {},
-            geometry: {
-                type: 'Point',
-                coordinates: [-46.5582212805748, -22.948336135223936],
-            },
+            type: 'Point',
+            coordinates: [-46.5582212805748, -22.948336135223936],
         },
         foto: { nome: 'fotoTeste', url: 'https://picsum.photos/350/600' },
         status: 'EXECUTANDO',
-        resposta: { descricao: '', data: Date.now(), usuario: '' },
-        dataCriacao: Date.now(),
+        resposta: { descricao: '', data: new Date(), usuario: '' },
+        dataCriacao: new Date(),
     },
     {
         _id: '4',
         usuario: '234234',
-        categoria: 'Lorem ipsum',
+        categoria: {
+            nome: 'Lorem Ipsum',
+        },
         descricao:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis sodales semper. Ut vulputate nibh venenatis orci vestibulum viverra. Vivamus.  ',
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis sodales semper. Ut vulputate nibh venenatis orci vestibulum viverra. Vivamus.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis sodales semper. Ut vulputate nibh venenatis orci vestibulum viverra. Vivamus.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis sodales semper. Ut vulputate nibh venenatis orci vestibulum viverra. Vivamus.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis sodales semper. Ut vulputate nibh venenatis orci vestibulum viverra. Vivamus.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis sodales semper. Ut vulputate nibh venenatis orci vestibulum viverra. Vivamus.  ',
         localizacao: {
-            type: 'Feature',
-            properties: {},
-            geometry: {
-                type: 'Point',
-                coordinates: [-46.5582212805748, -22.948336135223936],
-            },
+            type: 'Point',
+            coordinates: [-46.5582212805748, -22.948336135223936],
         },
         foto: { nome: 'fotoTeste', url: 'https://picsum.photos/4000' },
         status: 'FINALIZADO',
         resposta: {
-            descricao: 'Lorem Ipsum Executado',
-            data: Date.now(),
-            usuario: '123123123',
+            descricao:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque mollis, risus eu sollicitudin aliquet, libero elit auctor lacus, ac cursus odio mi et est.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque mollis, risus eu sollicitudin aliquet, libero elit auctor lacus, ac cursus odio mi et est.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque mollis, risus eu sollicitudin aliquet, libero elit auctor lacus, ac cursus odio mi et est.',
+            data: new Date(),
+            usuario: '',
         },
-        dataCriacao: Date.now(),
-    },
-    {
-        _id: '5',
-        usuario: '234234',
-        categoria: 'Lorem ipsum',
-        descricao:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque mollis, risus eu sollicitudin aliquet, libero elit au vulputate nibh venenatis orci vestibulum viverra. Vivamus.  ',
-        localizacao: {
-            type: 'Feature',
-            properties: {},
-            geometry: {
-                type: 'Point',
-                coordinates: [-46.5582212805748, -22.948336135223936],
-            },
-        },
-        foto: { nome: 'fotoTeste', url: 'https://picsum.photos/600' },
-        status: 'ABERTO',
-        resposta: { descricao: '', data: Date.now(), usuario: '' },
-        dataCriacao: Date.now(),
-    },
-    {
-        _id: '6',
-        usuario: '234234',
-        categoria: 'Lorem ipsum',
-        descricao:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis sodales semper. Ut vulputate nibh venenatis orci vestibulum viverra. Vivamus.  ',
-        localizacao: {
-            type: 'Feature',
-            properties: {},
-            geometry: {
-                type: 'Point',
-                coordinates: [-46.5582212805748, -22.948336135223936],
-            },
-        },
-        foto: { nome: 'fotoTeste', url: 'https://picsum.photos/600/350' },
-        status: 'ANALISANDO',
-        resposta: { descricao: '', data: Date.now(), usuario: '' },
-        dataCriacao: Date.now(),
-    },
-    {
-        _id: '7',
-        usuario: '234234',
-        categoria: 'Lorem ipsum',
-        descricao:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis sodales semper. Ut vulputate nibh venenatis orci vestibulum viverra. Vivamus.  ',
-        localizacao: {
-            type: 'Feature',
-            properties: {},
-            geometry: {
-                type: 'Point',
-                coordinates: [-46.5582212805748, -22.948336135223936],
-            },
-        },
-        foto: { nome: 'fotoTeste', url: 'https://picsum.photos/350/600' },
-        status: 'EXECUTANDO',
-        resposta: { descricao: '', data: Date.now(), usuario: '' },
-        dataCriacao: Date.now(),
-    },
-    {
-        _id: '8',
-        usuario: '234234',
-        categoria: 'Lorem ipsum',
-        descricao:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis sodales semper. Ut vulputate nibh venenatis orci vestibulum viverra. Vivamus.  ',
-        localizacao: {
-            type: 'Feature',
-            properties: {},
-            geometry: {
-                type: 'Point',
-                coordinates: [-46.5582212805748, -22.948336135223936],
-            },
-        },
-        foto: { nome: 'fotoTeste', url: 'https://picsum.photos/4000' },
-        status: 'FINALIZADO',
-        resposta: {
-            descricao: 'Lorem Ipsum Executado',
-            data: Date.now(),
-            usuario: '123123123',
-        },
-        dataCriacao: Date.now(),
+        dataCriacao: new Date(),
     },
 ];

@@ -19,6 +19,7 @@ export default ProblemCard = ({ data, onPress, style }) => {
                     <View style={styles.imageContainer}>
                         <Image
                             style={styles.image}
+                            defaultSource={require('../assets/images/default-placeholder.png')}
                             source={{ uri: data.foto.url }}
                         />
                     </View>
