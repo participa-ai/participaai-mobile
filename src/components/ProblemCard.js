@@ -22,6 +22,17 @@ export default ProblemCard = ({ data, onPress, style }) => {
                             defaultSource={require('../assets/images/default-placeholder.png')}
                             source={{ uri: data.foto.url }}
                         />
+                        {data?.resposta.descricao ? (
+                            <Icon
+                                style={styles.icon}
+                                iconFamily="Ionicons"
+                                iconName="checkmark-circle"
+                                size={Dimensions.get('screen').height * 0.05}
+                                color={colors.orange}
+                            />
+                        ) : (
+                            <></>
+                        )}
                     </View>
                     <Text style={styles.text} numberOfLines={6}>
                         {data.descricao}
@@ -54,6 +65,11 @@ const styles = StyleSheet.create({
         width: 132,
         resizeMode: 'cover',
         borderRadius: 7,
+    },
+    icon: {
+        position: 'absolute',
+        bottom: 0,
+        right: 0,
     },
     text: {
         flex: 1,
