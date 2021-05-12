@@ -5,6 +5,7 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 import { FontAwesome } from '@expo/vector-icons';
+import * as Location from 'expo-location';
 
 export default NewProblem = ({ navigation, route }) => {
     const [base64Image, setBase64Image] = useState(null);
@@ -17,8 +18,43 @@ export default NewProblem = ({ navigation, route }) => {
     const [endereco, setEndereco] = useState('');
 
     useEffect(() => {
-        setEndereco('latitude: ' + String(route.params.latitude) + ', \n longitude: ' + String(route.params.longitude));
-    }, []);
+        Location.reverseGeocodeAsync({ latitude: route.params.latitude, longitude: route.params.longitude })
+            .then(
+                addressesInformations => {
+                    let addressInformation = null;
+                    let address = null;
+                    let number = null;
+                    let city = null;
+                    let completeAddress = 'Sem informações do endereço';
+
+                    if (addressesInformations.length <= 0) {
+                        setEndereco(completeAddress);
+                        return;
+                    }
+
+                    addressInformation = addressesInformations[0];
+
+                    if (addressInformation.street)
+                        address = addressInformation.street;
+
+                    if (addressInformation.name)
+                        number = addressInformation.name;
+
+                    if (addressInformation.subregion)
+                        city = addressInformation.subregion;
+
+                    if (address) {
+                        completeAddress = address;
+                        completeAddress += number ? `, ${number}` : '';
+                        completeAddress += city ? `,\n${city}` : '';
+                    }
+                    
+                    setEndereco(completeAddress);
+                }
+            )
+            .catch(err => console.log(err))
+
+    }, [route.params]);
 
     // TODO: Carregar as categorias, usando useEffect, chamando a API
 

@@ -32,17 +32,17 @@ export default Home = ({ navigation }) => {
             setRegionLocal({
                 latitude: location.coords.latitude,
                 longitude: location.coords.longitude,
-                latitudeDelta: 0,
-                longitudeDelta: 0
+                latitudeDelta: 0.0005,
+                longitudeDelta: 0.0005
             });
         })();
     }, []);
 
     function handleAddProblem() {
-        navigation.navigate('NewProblem', {latitude: regionLocal.latitude, longitude: regionLocal.longitude});
+        navigation.navigate('NewProblem', { latitude: regionLocal.latitude, longitude: regionLocal.longitude });
     }
 
-    function onMapRegionChange(region) {
+    function onMapRegionChangeComplete(region) {
         setRegionLocal(region);
     }
 
@@ -54,7 +54,8 @@ export default Home = ({ navigation }) => {
                     style={styles.map}
                     showsUserLocation={true}
                     region={regionLocal}
-                    onRegionChange={(reg) => onMapRegionChange(reg)}
+                    showsMyLocationButton={false}
+                    onRegionChangeComplete={(reg) => onMapRegionChangeComplete(reg)}
                 >
                 </MapView>
             </View>
@@ -85,7 +86,7 @@ const styles = StyleSheet.create({
     },
     button: {},
     map: {
-        width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height,
+        width: '100%',
+        height: '100%'
     }
 });
