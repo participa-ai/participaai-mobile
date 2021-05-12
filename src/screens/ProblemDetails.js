@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     View,
     Text,
@@ -8,15 +8,20 @@ import {
     ScrollView,
     Image,
 } from 'react-native';
+
+import { globalStyles } from '../styles/global';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 
-import { globalStyles } from '../styles/global';
 import { dateFormatDDMMYYYY } from '../utils/utils';
 import Icon from '../components/Icon';
 
 export default ProblemDetails = ({ navigation, route }) => {
     const { problem } = route.params;
+
+    function handleOnPressImage() {
+        navigation.navigate('ImageView', { imageUrl: problem.foto.url });
+    }
 
     function handleOnPressLocation() {
         navigation.navigate('HomeStack');
@@ -25,11 +30,16 @@ export default ProblemDetails = ({ navigation, route }) => {
     return (
         <View style={globalStyles.container}>
             <View style={styles.fotoContainer}>
-                <Image
-                    style={styles.foto}
-                    defaultSource={require('../assets/images/default-placeholder.png')}
-                    source={{ uri: problem.foto.url }}
-                />
+                <TouchableOpacity
+                    style={styles.fotoContainer}
+                    onPress={handleOnPressImage}
+                >
+                    <Image
+                        style={styles.foto}
+                        defaultSource={require('../assets/images/default-placeholder.png')}
+                        source={{ uri: problem.foto.url }}
+                    />
+                </TouchableOpacity>
             </View>
 
             <View style={styles.detailsContainer}>

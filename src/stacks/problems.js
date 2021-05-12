@@ -10,6 +10,7 @@ import ParticipaP from '../assets/images/participa-p.svg';
 
 import Problems from '../screens/Problems';
 import ProblemDetails from '../screens/ProblemDetails';
+import ImageView from '../screens/ImageView';
 
 const SettingsStack = createStackNavigator();
 
@@ -37,6 +38,11 @@ export default SettingsStacks = () => {
                 name="ProblemDetails"
                 component={ProblemDetails}
                 options={{ headerShown: false }}
+            />
+            <SettingsStack.Screen
+                name="ImageView"
+                component={ImageView}
+                options={{ title: 'Foto' }}
             />
         </SettingsStack.Navigator>
     );
