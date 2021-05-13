@@ -15,6 +15,7 @@ import fonts from '../styles/fonts';
 
 import { dateFormatDDMMYYYY } from '../utils/utils';
 import Icon from '../components/Icon';
+import ProblemWorkflow from '../components/ProblemWorkflow';
 
 export default ProblemDetails = ({ navigation, route }) => {
     const { problem } = route.params;
@@ -55,6 +56,8 @@ export default ProblemDetails = ({ navigation, route }) => {
                         />
                     </TouchableOpacity>
                 </View>
+
+                <ProblemWorkflow problem={problem} style={styles.workflow} />
 
                 <View style={styles.descriptionContainer}>
                     <ScrollView style={styles.descriptionScroll}>
@@ -119,6 +122,12 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
     },
+    workflow: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: Dimensions.get('screen').height * 0.05,
+        marginVertical: Dimensions.get('screen').height * 0.008,
+    },
     title: {
         borderBottomColor: colors.orange,
         borderBottomWidth: 1,
@@ -133,7 +142,7 @@ const styles = StyleSheet.create({
     icon: {},
     descriptionContainer: {
         flex: 1,
-        paddingBottom: Dimensions.get('screen').height * 0.03,
+        paddingBottom: Dimensions.get('screen').height * 0.025,
     },
     descriptionScroll: {
         flex: 1,

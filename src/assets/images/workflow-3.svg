@@ -1,0 +1,29 @@
+<svg width="69.677mm" height="9.0373mm" version="1.1" viewBox="0 0 69.677 9.0373" xmlns="http://www.w3.org/2000/svg">
+ <g transform="translate(2.8978 1)">
+  <circle cx="1.9844" cy="1.9844" r="1.8512" style="fill:none;stroke-width:.26642;stroke:#ff5c46"/>
+  <circle cx="1.9844" cy="1.9844" r=".66146" style="fill:#ff5c46"/>
+  <g style="fill:none;stroke:#ff5c46">
+   <path d="m3.9423 1.9509h15.399" style="fill:none;stroke-width:.26458;stroke:#ff5c46"/>
+   <g transform="translate(-5.2917)" style="fill:none;stroke:#ff5c46">
+    <circle cx="26.591" cy="1.9844" r="1.8512" style="fill:none;stroke-width:.26642;stroke:#ff5c46"/>
+    <circle cx="26.591" cy="1.9844" r=".66146" style="fill:#ff5c46;stroke:none"/>
+   </g>
+   <path d="m23.257 1.9508h15.399" style="fill:none;stroke-width:.26458;stroke:#ff5c46"/>
+   <g transform="translate(-10.583)" style="fill:none;stroke:#ff5c46">
+    <circle cx="51.197" cy="1.9844" r="1.8512" style="fill:none;stroke-width:.26642;stroke:#ff5c46"/>
+    <circle cx="51.197" cy="1.9844" r=".66146" style="fill:#ff5c46;stroke:none"/>
+   </g>
+  </g>
+  <g style="fill:none;stroke:#c5c5c5">
+   <path d="m42.571 1.9509h15.399" style="fill:none;stroke-dasharray:0.793753, 0.264583;stroke-width:.26458;stroke:#c5c5c5"/>
+   <g transform="translate(-15.875)" style="fill:none;stroke:#c5c5c5">
+    <circle cx="75.803" cy="1.9844" r="1.8512" style="fill:none;stroke-width:.26642;stroke:#c5c5c5"/>
+    <circle cx="75.803" cy="1.9844" r=".66146" style="fill:none;stroke-width:.095198;stroke:#c5c5c5"/>
+   </g>
+  </g>
+  <text x="-1.9339904" y="7.0114555" style="fill:#ff5c46;font-family:Roboto;font-size:2.6458px;font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1.25;stroke-width:.26458" xml:space="preserve"><tspan x="-1.9339904" y="7.0114555" style="fill:#ff5c46;font-family:Roboto;font-size:2.6458px;font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;stroke-width:.26458">Aberto</tspan></text>
+  <text x="14.753457" y="7.0114555" style="fill:#ff5c46;font-family:Roboto;font-size:2.6458px;font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1.25;stroke-width:.26458" xml:space="preserve"><tspan x="14.753457" y="7.0114555" style="fill:#ff5c46;font-family:Roboto;font-size:2.6458px;font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;stroke-width:.26458">Analisando</tspan></text>
+  <text x="33.664318" y="7.0114555" style="fill:#ff5c46;font-family:Roboto;font-size:2.6458px;font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1.25;stroke-width:.26458" xml:space="preserve"><tspan x="33.664318" y="7.0114555" style="fill:#ff5c46;font-family:Roboto;font-size:2.6458px;font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;stroke-width:.26458">Executando</tspan></text>
+  <text x="53.858692" y="7.0114555" style="fill:#c5c5c5;font-family:Roboto;font-size:2.6458px;font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;line-height:1.25;stroke-width:.26458" xml:space="preserve"><tspan x="53.858692" y="7.0114555" style="fill:#c5c5c5;font-family:Roboto;font-size:2.6458px;font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;stroke-width:.26458">Finalizado</tspan></text>
+ </g>
+</svg>
