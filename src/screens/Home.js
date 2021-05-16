@@ -5,12 +5,12 @@ import * as Location from 'expo-location';
 
 import { globalStyles } from '../styles/global';
 import Logo from '../assets/images/participa-p.svg';
+import Center from '../assets/images/center-map-icon.svg';
 import Icon from '../components/Icon';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 
 export default Home = ({ navigation }) => {
-
     const [errorMsg, setErrorMsg] = useState(null);
     const [address, setAddress] = useState('Pesquisar endereço');
     const [regionLocal, setRegionLocal] = useState({
@@ -19,7 +19,8 @@ export default Home = ({ navigation }) => {
         latitudeDelta: 0,
         longitudeDelta: 0
     });
-    const [map, setMap] = useState(null);
+    const [useUserLocation, setUseUserLocation] = useState(true);
+    const mapView = React.createRef();
 
     useEffect(() => {
         (async () => {
@@ -42,6 +43,7 @@ export default Home = ({ navigation }) => {
     }, []);
 
     function setAddressHome(addressHome) {
+        setUseUserLocation(false);
         setAddress(addressHome);
     }
 
@@ -53,12 +55,20 @@ export default Home = ({ navigation }) => {
         navigation.navigate('SearchAddress', { placeholder: 'Pesquisar Endereço', setAddressHome: setAddressHome });
     }
 
-    function onMapRegionChangeComplete(region) {
-        setRegionLocal(region);
+    function onUserLocationChange(region) {
+        setRegionLocal({ latitude: region.latitude, longitude: region.longitude, latitudeDelta: 0.0005, longitudeDelta: 0.0005 });
+
+        if (useUserLocation)
+            handleCenter();
     }
 
     function handleCenter() {
-        map.animateCamera(regionLocal, 1000);
+        mapView.current.animateToRegion({
+            latitude: regionLocal.latitude,
+            longitude: regionLocal.longitude,
+            latitudeDelta: 0.0005,
+            longitudeDelta: 0.0005
+        });
     }
 
     return (
@@ -68,8 +78,8 @@ export default Home = ({ navigation }) => {
                     style={styles.map}
                     showsUserLocation={true}
                     showsMyLocationButton={false}
-                    onRegionChangeComplete={(reg) => onMapRegionChangeComplete(reg)}
-                    ref={component => { setMap(component) }}
+                    onUserLocationChange={e => onUserLocationChange({ latitude: e.nativeEvent.coordinate.latitude, longitude: e.nativeEvent.coordinate.longitude })}
+                    ref={mapView}
                 >
                 </MapView>
             </View>
@@ -78,20 +88,40 @@ export default Home = ({ navigation }) => {
                     style={styles.buttonSearchAddress}
                     activeOpacity={1}
                 >
-                    <Logo
-                        width={20}
-                        height={20}
-                    />
+                    <View
+                        style={{ flex: 1 }}
+                    >
+                        <Logo
+                            width={25}
+                            height={25}
+                        />
+                    </View>
                     <TouchableOpacity
                         onPress={handleSearchAddress}
                         activeOpacity={1}
-                        style={{ width: '100%' }}
+                        style={{ width: '100%', flex: 8 }}
                     >
                         <Text
                             style={styles.address}
                         >
                             {address}
                         </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        activeOpacity={1}
+                        style={{ width: '100%', height: '100%', flex: 1 }}
+                        onPress={
+                            () => {
+                                setUseUserLocation(true);
+                                handleCenter();
+                            }
+                        }
+                    >
+                        <Center
+                            fill={colors.orange}
+                            width={25}
+                            height={25}
+                        />
                     </TouchableOpacity>
                 </TouchableOpacity>
             </View>
@@ -107,7 +137,6 @@ export default Home = ({ navigation }) => {
                     />
                 </TouchableOpacity>
             </View>
-            <Button onPress={handleCenter} title='Centralizar' />
         </SafeAreaView>
     );
 };
@@ -135,6 +164,7 @@ const styles = StyleSheet.create({
         fontFamily: fonts.text,
         fontSize: 20,
         flexDirection: 'row',
+        justifyContent: 'space-between'
     },
     map: {
         width: '100%',
