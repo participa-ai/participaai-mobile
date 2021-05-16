@@ -8,6 +8,7 @@ import {
     Keyboard,
     Dimensions,
     Alert,
+    SafeAreaView,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Formik } from 'formik';
@@ -56,7 +57,7 @@ export default ForgotPassword = ({ navigation }) => {
     }
 
     return (
-        <View style={globalStyles.container}>
+        <SafeAreaView style={globalStyles.container}>
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <ScrollView
                     contentContainerStyle={globalStyles.container}
@@ -127,7 +128,7 @@ export default ForgotPassword = ({ navigation }) => {
                     { zIndex: -1 },
                 ]}
             />
-        </View>
+        </SafeAreaView>
     );
 };
 

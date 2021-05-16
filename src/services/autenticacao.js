@@ -23,6 +23,7 @@ export async function cadastrar(formData) {
 
     return await resolve(api.post(`${authUrl}/cadastro`, body));
 }
+
 export async function esqueciSenha(formData) {
     const { email } = formData;
     const body = JSON.stringify({
@@ -30,6 +31,16 @@ export async function esqueciSenha(formData) {
     });
 
     return await resolve(api.post(`${authUrl}/esqueci-senha`, body));
+}
+
+export async function alterarSenha(formData) {
+    const { senhaAtual, senhaNova } = formData;
+    const body = JSON.stringify({
+        senhaAtual,
+        senhaNova,
+    });
+
+    return await resolve(api.post(`${authUrl}/alterar-senha`, body));
 }
 
 export async function getEu() {

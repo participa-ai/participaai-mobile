@@ -11,8 +11,14 @@ const api = axios.create({
 
 let token = '';
 try {
-    token = AsyncStorage.getItem(config.asyncStorageKeys.token);
-    api.defaults.headers.authorization = `Bearer ${token}`;
+    AsyncStorage.getItem(config.asyncStorageKeys.token)
+        .then((value) => {
+            token = value;
+            api.defaults.headers.authorization = `Bearer ${token}`;
+        })
+        .catch((error) => {
+            token = '';
+        });
 } catch (e) {
     console.log(e);
 }
