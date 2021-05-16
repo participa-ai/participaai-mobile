@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import config from '../config';
-import * as auth from '../services/auth';
+import * as autenticacaoService from '../services/autenticacao';
 import { Alert } from 'react-native';
 
 const AuthContext = React.createContext({ authenticated: false, token: '' });
@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }) => {
                     config.asyncStorageKeys.token
                 );
             } catch (e) {
-                console.log(e);
+                console.error(e);
             }
 
             if (storageToken) {
@@ -34,20 +34,31 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     async function login(cpf, senha) {
-        const response = await auth.login(cpf, senha);
+        let response;
+        try {
+            response = await autenticacaoService.login(cpf, senha);
+        } catch (error) {
+            Alert.alert('Ops', 'Falha ao comunicar com o servidor!');
+            console.warn(error.message);
+            return false;
+        }
 
-        if (!response.sucess) {
+        if (!response.success) {
             Alert.alert('Ops', response.data.message);
             return false;
         }
 
         if (response.data.token) {
-            setToken(response.data.token);
-            await AsyncStorage.setItem(
-                config.asyncStorageKeys.token,
-                response.data.token
-            );
-            return true;
+            try {
+                setToken(response.data.token);
+                await AsyncStorage.setItem(
+                    config.asyncStorageKeys.token,
+                    response.data.token
+                );
+                return true;
+            } catch (error) {
+                console.error(error.message);
+            }
         }
     }
 

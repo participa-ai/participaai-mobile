@@ -1,6 +1,6 @@
 export async function resolve(promise) {
     let resolved = {
-        sucess: false,
+        success: false,
         metadata: {
             type: 'error',
         },

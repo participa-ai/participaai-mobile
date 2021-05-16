@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import {
     StyleSheet,
     Text,
-    ScrollView,
-    View,
+    SafeAreaView,
     TouchableOpacity,
+    KeyboardAvoidingView,
+    Dimensions,
+    TouchableWithoutFeedback,
+    Keyboard,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Formik } from 'formik';
@@ -39,82 +42,83 @@ export default Login = ({ navigation }) => {
     };
 
     return (
-        <View style={globalStyles.container}>
+        <SafeAreaView style={globalStyles.container}>
             <Formik
                 initialValues={{ cpf: '444.652.000-80', password: '123456' }}
-                // validationSchema={loginSchema}
+                validationSchema={loginSchema}
                 onSubmit={(values, actions) => {
                     handleLogin(values);
                 }}
             >
                 {(formikProps) => (
-                    <ScrollView
-                        contentContainerStyle={styles.scrollview}
-                        keyboardDismissMode="on-drag"
-                        showsVerticalScrollIndicator={false}
-                    >
-                        <Logo style={styles.logo} />
+                    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                        <KeyboardAvoidingView style={globalStyles.container}>
+                            <Logo style={styles.logo} />
 
-                        <FlatIconInput
-                            iconFamily="Ionicons"
-                            iconName="person-circle"
-                            placeholder="CPF"
-                            keyboardType="numeric"
-                            maskType="cpf"
-                            style={styles.input}
-                            onSubmitEditing={() => {
-                                passwordInput.current.focus();
-                            }}
-                            blurOnSubmit={false}
-                            onChangeText={formikProps.handleChange('cpf')}
-                            value={formikProps.values.cpf}
-                            onBlur={formikProps.handleBlur('cpf')}
-                        />
-                        {/* <Text style={globalStyles.errorText}>
-                            {formikProps.touched.cpf && formikProps.errors.cpf}
-                        </Text> */}
-
-                        <FlatIconInput
-                            iconFamily="Ionicons"
-                            iconName="lock-closed"
-                            placeholder="Senha"
-                            style={styles.input}
-                            ref={passwordInput}
-                            secureTextEntry={true}
-                            onChangeText={formikProps.handleChange('password')}
-                            value={formikProps.values.password}
-                            onBlur={formikProps.handleBlur('password')}
-                        />
-                        {/* <Text style={globalStyles.errorText}>
-                            {formikProps.touched.password &&
-                                formikProps.errors.password}
-                        </Text> */}
-
-                        <TouchableOpacity
-                            style={styles.touch}
-                            onPress={handleForgot}
-                        >
-                            <Text style={styles.linkText}>
-                                Esqueceu sua senha?
+                            <Text style={globalStyles.errorText}>
+                                {formikProps.touched.cpf &&
+                                    formikProps.errors.cpf}
                             </Text>
-                        </TouchableOpacity>
+                            <FlatIconInput
+                                iconFamily="Ionicons"
+                                iconName="person-circle"
+                                placeholder="CPF"
+                                keyboardType="numeric"
+                                maskType="cpf"
+                                style={styles.input}
+                                onSubmitEditing={() => {
+                                    passwordInput.current.focus();
+                                }}
+                                blurOnSubmit={false}
+                                onChangeText={formikProps.handleChange('cpf')}
+                                value={formikProps.values.cpf}
+                                onBlur={formikProps.handleBlur('cpf')}
+                            />
 
-                        <FlatButton
-                            onPress={formikProps.handleSubmit}
-                            label="ENTRAR"
-                            isWaiting={isWaiting}
-                            disabled={isWaiting}
-                        />
+                            <Text style={globalStyles.errorText}>
+                                {formikProps.touched.password &&
+                                    formikProps.errors.password}
+                            </Text>
+                            <FlatIconInput
+                                iconFamily="Ionicons"
+                                iconName="lock-closed"
+                                placeholder="Senha"
+                                style={styles.input}
+                                ref={passwordInput}
+                                secureTextEntry={true}
+                                onChangeText={formikProps.handleChange(
+                                    'password'
+                                )}
+                                value={formikProps.values.password}
+                                onBlur={formikProps.handleBlur('password')}
+                            />
 
-                        <Text style={styles.text}>OU</Text>
+                            <TouchableOpacity
+                                style={styles.touch}
+                                onPress={handleForgot}
+                            >
+                                <Text style={styles.linkText}>
+                                    Esqueceu sua senha?
+                                </Text>
+                            </TouchableOpacity>
 
-                        <FlatButton
-                            secondary
-                            onPress={handleSignup}
-                            label="CADASTRE-SE"
-                            style={styles.button}
-                        />
-                    </ScrollView>
+                            <FlatButton
+                                onPress={formikProps.handleSubmit}
+                                label="ENTRAR"
+                                isWaiting={isWaiting}
+                                disabled={isWaiting}
+                            />
+
+                            <Text style={styles.text}>OU</Text>
+
+                            <FlatButton
+                                secondary
+                                onPress={handleSignup}
+                                label="CADASTRE-SE"
+                                style={styles.button}
+                            />
+                        </KeyboardAvoidingView>
+                    </TouchableWithoutFeedback>
                 )}
             </Formik>
             <LinearGradient
@@ -126,25 +130,19 @@ export default Login = ({ navigation }) => {
                     { zIndex: -1 },
                 ]}
             />
-        </View>
+        </SafeAreaView>
     );
 };
 
 const styles = StyleSheet.create({
-    scrollview: {
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-        backgroundColor: 'transparent',
-    },
     logo: {
-        marginTop: '45%',
-        marginBottom: 75,
+        marginTop: Dimensions.get('screen').height * 0.15,
+        marginBottom: Dimensions.get('screen').height * 0.07,
     },
     input: {
-        marginTop: 25,
+        marginBottom: 15,
     },
     touch: {
-        marginTop: 10,
         marginBottom: 40,
         padding: 5,
     },
@@ -165,6 +163,6 @@ const styles = StyleSheet.create({
 });
 
 const loginSchema = yup.object({
-    cpf: yup.string().required().label('CPF'),
-    password: yup.string().required().label('Senha'),
+    cpf: yup.string().required('CPF é obrigatório'),
+    password: yup.string().required('Senha é obrigatória'),
 });

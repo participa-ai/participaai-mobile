@@ -7,3 +7,19 @@ export function dateFormatDDMMYYYY(date) {
 
     return `${day}/${month}/${year}`;
 }
+
+export function processMessage(message) {
+    if (message.includes('Valor duplicado encontrado:'))
+        return processDuplicatedMessage(message);
+
+    return message;
+}
+
+function processDuplicatedMessage(message) {
+    let dado;
+
+    if (message.includes('email')) dado = 'e-mail';
+    if (message.includes('cpf')) dado = 'CPF';
+
+    return `Já existe um registro cadastrado com esse ${dado}`;
+}
