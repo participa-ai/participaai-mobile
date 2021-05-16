@@ -224,10 +224,7 @@ const signupInitialValues = {
 const signupSchema = yup.object({
     nome: yup.string().required('Nome é obrigatório'),
     cpf: yup.string().required('CPF é obrigatório'),
-    email: yup
-        .string()
-        .email('Email é inválido')
-        .required('Email é obrigatório'),
+    email: yup.string().email('Email inválido').required('Email é obrigatório'),
     senha: yup
         .string()
         .required('Senha é obrigatória')

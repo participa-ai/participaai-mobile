@@ -12,8 +12,8 @@ export async function login(cpf, senha) {
     return await resolve(api.post(`${authUrl}/login`, body));
 }
 
-export async function cadastrar(usuario) {
-    const { nome, cpf, email, senha } = usuario;
+export async function cadastrar(formData) {
+    const { nome, cpf, email, senha } = formData;
     const body = JSON.stringify({
         nome,
         cpf,
@@ -22,6 +22,14 @@ export async function cadastrar(usuario) {
     });
 
     return await resolve(api.post(`${authUrl}/cadastro`, body));
+}
+export async function esqueciSenha(formData) {
+    const { email } = formData;
+    const body = JSON.stringify({
+        email,
+    });
+
+    return await resolve(api.post(`${authUrl}/esqueci-senha`, body));
 }
 
 export async function getEu() {
