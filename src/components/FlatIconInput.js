@@ -16,13 +16,8 @@ export default class FlatIconInput extends Component {
     }
 
     render() {
-        const {
-            iconFamily,
-            iconName,
-            style,
-            maskType,
-            ...inputProps
-        } = this.props;
+        const { iconFamily, iconName, style, maskType, ...inputProps } =
+            this.props;
 
         return (
             <View style={style}>
@@ -92,7 +87,7 @@ const componentStyles = StyleSheet.create({
         padding: 11,
 
         color: colors.black,
-        textTransform: 'uppercase',
+        //textTransform: 'uppercase',
 
         fontFamily: fonts.heading,
         fontSize: 20,

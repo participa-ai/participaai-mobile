@@ -7,7 +7,6 @@ import { globalStyles } from '../styles/global';
 
 export default ImageView = ({ route }) => {
     const { imageUrl } = route.params;
-    console.log(imageUrl);
 
     return (
         <View style={[globalStyles.container, styles.view]}>

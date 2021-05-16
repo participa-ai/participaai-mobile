@@ -52,9 +52,11 @@ export default FlatButton = ({
 const styles = StyleSheet.create({
     button: {
         alignItems: 'center',
+        justifyContent: 'center',
         backgroundColor: colors.orange,
         padding: 14,
         borderRadius: 50,
+        height: Dimensions.get('screen').height * 0.075,
         width: Dimensions.get('screen').width * 0.75,
     },
     text: {
@@ -64,9 +66,11 @@ const styles = StyleSheet.create({
     },
     buttonSecondary: {
         alignItems: 'center',
+        justifyContent: 'center',
         backgroundColor: colors.background,
         padding: 16,
         borderRadius: 50,
+        height: Dimensions.get('screen').height * 0.075,
         width: Dimensions.get('screen').width * 0.75,
     },
     textSecondary: {
