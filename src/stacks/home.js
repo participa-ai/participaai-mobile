@@ -11,6 +11,7 @@ import ParticipaP from '../assets/images/participa-p.svg';
 import Home from '../screens/Home';
 import NewProblem from '../screens/NewProblem';
 import CameraScreen from '../screens/CameraScreen';
+import SearchAddress from '../screens/SearchAddress';
 
 const HomeStack = createStackNavigator();
 
@@ -37,6 +38,13 @@ export default HomeStacks = () => {
                 component={CameraScreen}
                 options={{
                     title: 'Tire uma foto do problema'
+                }}
+            />
+            <HomeStack.Screen
+                name="SearchAddress"
+                component={SearchAddress}
+                options={{
+                    title: 'Procurar endereço'
                 }}
             />
         </HomeStack.Navigator>
