@@ -45,11 +45,11 @@ export default Signup = ({ navigation }) => {
                     return;
                 }
 
-                Alert.alert(
-                    'Pronto!',
-                    'Cadastro realizado com sucesso, entre no sistema com suas credenciais.'
-                );
-                navigation.popToTop();
+                navigation.navigate('Confirmation', {
+                    text: 'Cadastro realizado com sucesso, entre no sistema com suas credenciais.',
+                    buttonText: 'OK',
+                    navigateScreen: 'pop',
+                });
             })
             .catch((error) => {
                 setIsWaiting(false);

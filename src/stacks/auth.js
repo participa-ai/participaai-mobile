@@ -9,7 +9,7 @@ import BackArrow from '../assets/images/back-arrow.svg';
 import Login from '../screens/Login';
 import Signup from '../screens/Signup';
 import ForgotPassword from '../screens/ForgotPassword';
-import RecoveryEmailSent from '../screens/RecoveryEmailSent';
+import Confirmation from '../screens/Confirmation';
 
 const AuthStack = createStackNavigator();
 
@@ -29,10 +29,7 @@ export default AuthStacks = () => {
                 name="ForgotPassword"
                 component={ForgotPassword}
             />
-            <AuthStack.Screen
-                name="RecoveryEmailSent"
-                component={RecoveryEmailSent}
-            />
+            <AuthStack.Screen name="Confirmation" component={Confirmation} />
         </AuthStack.Navigator>
     );
 };

@@ -42,7 +42,11 @@ export default ForgotPassword = ({ navigation }) => {
                     return;
                 }
 
-                navigation.navigate('RecoveryEmailSent');
+                navigation.navigate('Confirmation', {
+                    text: 'Nós enviamos para o seu e-mail as instruções para trocar sua senha. Por favor, verifique seu e-mail!',
+                    buttonText: 'Voltar',
+                    navigateScreen: 'pop',
+                });
             })
             .catch((error) => {
                 setIsWaiting(false);

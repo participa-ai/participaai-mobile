@@ -9,9 +9,15 @@ import fonts from '../styles/fonts';
 import FlatButton from '../components/FlatButton';
 import Logo from '../components/Logo';
 
-export default RecoveryEmailSent = ({ navigation }) => {
-    const handleOk = () => {
-        navigation.popToTop();
+export default Confirmation = ({ navigation, route }) => {
+    const { text, buttonText, navigateScreen } = route.params;
+
+    const handleButtonPress = () => {
+        if (navigateScreen === 'pop') {
+            navigation.popToTop();
+        } else {
+            navigation.navigate(navigateScreen);
+        }
     };
 
     return (
@@ -23,15 +29,12 @@ export default RecoveryEmailSent = ({ navigation }) => {
             >
                 <Logo style={styles.logo} />
 
-                <Text style={styles.text}>
-                    Nós enviamos para o seu e-mail as instruções para trocar sua
-                    senha. Por favor, verifique seu e-mail!
-                </Text>
+                <Text style={styles.text}>{text}</Text>
 
                 <FlatButton
                     style={styles.button}
-                    label="Voltar"
-                    onPress={handleOk}
+                    label={buttonText}
+                    onPress={handleButtonPress}
                 />
             </ScrollView>
             <LinearGradient
