@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, FlatList, Dimensions } from 'react-native';
+import { View, StyleSheet, FlatList, Dimensions, Alert } from 'react-native';
 
 import colors from '../styles/colors';
 import { globalStyles } from '../styles/global';
+import { processMessage } from '../utils/utils';
+
+import * as problemasService from '../services/problemas';
 
 import Loading from '../components/Loading';
 import ProblemCard from '../components/ProblemCard';
@@ -16,13 +19,25 @@ export default Problems = ({ navigation }) => {
     }
 
     async function fetchProblems() {
-        //const { data } = await api.problems.get(`url`);
-        setTimeout(() => {
-            if (!data) return setLoading(true);
+        problemasService
+            .listar()
+            .then((response) => {
+                if (!response.success) {
+                    const message = processMessage(response.data.message);
 
-            setProblems(data);
-            setLoading(false);
-        }, 1000);
+                    Alert.alert('', message);
+                    return;
+                }
+
+                setProblems(response.data);
+                setLoading(false);
+            })
+            .catch((error) => {
+                Alert.alert('Ops', 'Falha ao comunicar com o servidor!');
+                console.error(error.message);
+                setProblems([]);
+                setLoading(false);
+            });
     }
 
     useEffect(() => {

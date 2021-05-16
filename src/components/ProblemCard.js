@@ -20,9 +20,9 @@ export default ProblemCard = ({ data, onPress, style }) => {
                         <Image
                             style={styles.image}
                             defaultSource={require('../assets/images/default-placeholder.png')}
-                            source={{ uri: data.foto.url }}
+                            source={{ uri: data?.foto?.uri }}
                         />
-                        {data?.resposta.descricao ? (
+                        {data?.resposta?.descricao ? (
                             <Icon
                                 style={styles.icon}
                                 iconFamily="Ionicons"
@@ -35,7 +35,7 @@ export default ProblemCard = ({ data, onPress, style }) => {
                         )}
                     </View>
                     <Text style={styles.text} numberOfLines={6}>
-                        {data.descricao}
+                        {data?.descricao}
                     </Text>
                 </View>
             </TouchableOpacity>

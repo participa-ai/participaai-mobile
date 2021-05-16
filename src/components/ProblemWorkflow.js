@@ -11,7 +11,7 @@ export default ProblemWorkflow = ({ problem, style }) => {
         const calculatedWidth = Dimensions.get('screen').width * 0.8;
         const calculatedHeight = Dimensions.get('screen').height * 0.05;
 
-        switch (problem.status.toLowerCase()) {
+        switch (problem?.status?.toLowerCase()) {
             case 'analisando':
                 return (
                     <Workflow2

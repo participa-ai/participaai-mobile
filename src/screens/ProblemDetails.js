@@ -21,7 +21,7 @@ export default ProblemDetails = ({ navigation, route }) => {
     const { problem } = route.params;
 
     function handleOnPressImage() {
-        navigation.navigate('ImageView', { imageUrl: problem.foto.url });
+        navigation.navigate('ImageView', { imageUrl: problem.foto.uri });
     }
 
     function handleOnPressLocation() {
@@ -38,7 +38,7 @@ export default ProblemDetails = ({ navigation, route }) => {
                     <Image
                         style={styles.foto}
                         defaultSource={require('../assets/images/default-placeholder.png')}
-                        source={{ uri: problem.foto.url }}
+                        source={{ uri: problem?.foto?.uri }}
                     />
                 </TouchableOpacity>
             </View>
@@ -62,28 +62,28 @@ export default ProblemDetails = ({ navigation, route }) => {
                 <View style={styles.descriptionContainer}>
                     <ScrollView style={styles.descriptionScroll}>
                         <Text style={styles.description}>
-                            {problem.descricao}
+                            {problem?.descricao}
                         </Text>
                     </ScrollView>
 
                     <Text style={styles.description}>
                         Data do problema:{' '}
-                        {dateFormatDDMMYYYY(problem.dataCriacao)}
+                        {dateFormatDDMMYYYY(problem?.dataCriacao)}
                     </Text>
                 </View>
 
-                {problem.resposta && problem.resposta.descricao ? (
+                {problem?.resposta && problem?.resposta?.descricao ? (
                     <View style={styles.anwserContainer}>
                         <ScrollView style={styles.descriptionScroll}>
                             <Text style={styles.anwserTitle}>Resposta</Text>
                             <Text style={styles.anwserDescription}>
-                                {problem.resposta.descricao}
+                                {problem?.resposta?.descricao}
                             </Text>
                         </ScrollView>
 
                         <Text style={styles.anwserDescription}>
                             Data da resposta:{' '}
-                            {dateFormatDDMMYYYY(problem.resposta.data)}
+                            {dateFormatDDMMYYYY(problem?.resposta?.data)}
                         </Text>
                     </View>
                 ) : (
@@ -117,6 +117,7 @@ const styles = StyleSheet.create({
         shadowColor: colors.black,
         elevation: 4,
         backgroundColor: colors.white,
+        width: Dimensions.get('screen').width,
     },
     header: {
         flexDirection: 'row',
