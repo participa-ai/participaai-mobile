@@ -9,6 +9,7 @@ import BackArrow from '../assets/images/back-arrow.svg';
 import ParticipaP from '../assets/images/participa-p.svg';
 
 import Problems from '../screens/Problems';
+import Confirmation from '../screens/Confirmation';
 import ProblemDetails from '../screens/ProblemDetails';
 import ImageView from '../screens/ImageView';
 
@@ -43,6 +44,11 @@ export default SettingsStacks = () => {
                 name="ImageView"
                 component={ImageView}
                 options={{ title: 'Foto' }}
+            />
+            <SettingsStack.Screen
+                name="Confirmation"
+                component={Confirmation}
+                options={{ headerShown: false }}
             />
         </SettingsStack.Navigator>
     );

@@ -10,9 +10,10 @@ import * as problemasService from '../services/problemas';
 import Loading from '../components/Loading';
 import ProblemCard from '../components/ProblemCard';
 
-export default Problems = ({ navigation }) => {
+export default Problems = ({ navigation, route }) => {
     const [problems, setProblems] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [forceReload, setForceReload] = useState(false);
 
     function handleCardOnPress(problem) {
         navigation.navigate('ProblemDetails', { problem });
@@ -42,7 +43,9 @@ export default Problems = ({ navigation }) => {
 
     useEffect(() => {
         fetchProblems();
-    }, []);
+    }, [forceReload]);
+
+    if (route?.params?.forceReload) setForceReload(route?.params?.forceReload);
 
     if (loading) return <Loading />;
 

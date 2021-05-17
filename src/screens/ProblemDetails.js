@@ -21,7 +21,8 @@ export default ProblemDetails = ({ navigation, route }) => {
     const { problem } = route.params;
 
     function handleOnPressImage() {
-        navigation.navigate('ImageView', { imageUrl: problem.foto.uri });
+        if (problem?.foto?.uri)
+            navigation.navigate('ImageView', { imageUrl: problem?.foto?.uri });
     }
 
     function handleOnPressLocation() {

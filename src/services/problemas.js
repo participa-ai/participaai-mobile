@@ -1,10 +1,10 @@
 import api from './api';
 import { resolve } from './resolve';
 
-const authUrl = '/problemas';
+const problemsUrl = '/problemas';
 
 export async function listar() {
-    return await resolve(api.get(`${authUrl}/meus-problemas`));
+    return await resolve(api.get(`${problemsUrl}/meus-problemas`));
 }
 
 export async function cadastrar(formData) {
@@ -15,9 +15,14 @@ export async function cadastrar(formData) {
         localizacao,
     });
 
-    return await resolve(api.post(`${authUrl}`, body));
+    return await resolve(api.post(`${problemsUrl}`, body));
 }
 
-export async function uploadFoto(formData) {
-    return '';
+export async function uploadFoto(problemaId, foto) {
+    var data = new FormData();
+    data.append('foto', foto);
+
+    return await resolve(
+        api.post(`${problemsUrl}/${problemaId}/upload-foto`, data)
+    );
 }
