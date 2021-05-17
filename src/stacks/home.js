@@ -12,6 +12,7 @@ import Home from '../screens/Home';
 import NewProblem from '../screens/NewProblem';
 import CameraScreen from '../screens/CameraScreen';
 import SearchAddress from '../screens/SearchAddress';
+import AddressNumber from '../screens/AddressNumber';
 
 const HomeStack = createStackNavigator();
 
@@ -45,6 +46,13 @@ export default HomeStacks = () => {
                 component={SearchAddress}
                 options={{
                     title: 'Procurar endereço'
+                }}
+            />
+            <HomeStack.Screen
+                name="AddressNumber"
+                component={AddressNumber}
+                options={{
+                    title: 'Digite o número'
                 }}
             />
         </HomeStack.Navigator>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { SafeAreaView, View, StyleSheet, TouchableOpacity, Text, Dimensions, Button } from 'react-native';
-import MapView from 'react-native-maps';
+import { SafeAreaView, View, StyleSheet, TouchableOpacity, Text, Dimensions } from 'react-native';
+import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
 
 import { globalStyles } from '../styles/global';
@@ -20,7 +20,9 @@ export default Home = ({ navigation }) => {
         longitudeDelta: 0
     });
     const [useUserLocation, setUseUserLocation] = useState(true);
-    const mapView = React.createRef();
+    const [mapView, setMapView] = useState(React.createRef());
+    const [manualLatitude, setManualLatitude] = useState(0.0);
+    const [manualLongitude, setManualLongitude] = useState(0.0);
 
     useEffect(() => {
         (async () => {
@@ -42,9 +44,34 @@ export default Home = ({ navigation }) => {
         })();
     }, []);
 
-    function setAddressHome(addressHome) {
+    function setAddressHome(address, number, city) {
         setUseUserLocation(false);
-        setAddress(addressHome);
+
+        let fullAddress = address;
+
+        if (number)
+            fullAddress += ', ' + number;
+
+        if (city)
+            fullAddress += ', ' + city;
+
+        setAddress(fullAddress);
+
+        Location.geocodeAsync(fullAddress)
+            .then(results => {
+                if (results.length <= 0) {
+                    console.log('Não foi a encontrada a coordenada deste endereço!');
+                    return;
+                }
+
+                setRegionLocal({ latitude: results[0].latitude, longitude: results[0].longitude, latitudeDelta: 0.0005, longitudeDelta: 0.0005 });
+
+                setManualLatitude(results[0].latitude);
+                setManualLongitude(results[0].longitude);
+
+                handleCenter(results[0].latitude, results[0].longitude);
+            })
+            .catch(error => console.log(error));
     }
 
     function handleAddProblem() {
@@ -58,14 +85,51 @@ export default Home = ({ navigation }) => {
     function onUserLocationChange(region) {
         setRegionLocal({ latitude: region.latitude, longitude: region.longitude, latitudeDelta: 0.0005, longitudeDelta: 0.0005 });
 
-        if (useUserLocation)
-            handleCenter();
+        if (useUserLocation) {
+            Location.reverseGeocodeAsync({ latitude: region.latitude, longitude: region.longitude })
+                .then(
+                    addressesInformations => {
+                        let addressInformation = null;
+                        let address = null;
+                        let number = null;
+                        let city = null;
+                        let completeAddress = 'Sem informações do endereço';
+
+                        if (addressesInformations.length <= 0) {
+                            setAddress(completeAddress);
+                            return;
+                        }
+
+                        addressInformation = addressesInformations[0];
+
+                        if (addressInformation.street)
+                            address = addressInformation.street;
+
+                        if (addressInformation.name)
+                            number = addressInformation.name;
+
+                        if (addressInformation.subregion)
+                            city = addressInformation.subregion;
+
+                        if (address) {
+                            completeAddress = address;
+                            completeAddress += number ? `, ${number}` : '';
+                            completeAddress += city ? `, ${city}` : '';
+                        }
+
+                        setAddress(completeAddress);
+                    }
+                )
+                .catch(err => console.log(err))
+
+            handleCenter(region.latitude, region.longitude);
+        }
     }
 
-    function handleCenter() {
-        mapView.current.animateToRegion({
-            latitude: regionLocal.latitude,
-            longitude: regionLocal.longitude,
+    function handleCenter(latitude, longitude) {
+        mapView.animateToRegion({
+            latitude: latitude,
+            longitude: longitude,
             latitudeDelta: 0.0005,
             longitudeDelta: 0.0005
         });
@@ -76,11 +140,19 @@ export default Home = ({ navigation }) => {
             <View style={[globalStyles.container, styles.mapContainer]}>
                 <MapView
                     style={styles.map}
-                    showsUserLocation={true}
+                    showsUserLocation={useUserLocation}
                     showsMyLocationButton={false}
                     onUserLocationChange={e => onUserLocationChange({ latitude: e.nativeEvent.coordinate.latitude, longitude: e.nativeEvent.coordinate.longitude })}
-                    ref={mapView}
+                    ref={component => setMapView(component)}
                 >
+                    {
+                        !useUserLocation ?
+                            <Marker
+                                coordinate={{ latitude: manualLatitude, longitude: manualLongitude }}
+                            ></Marker>
+                            :
+                            <View></View>
+                    }
                 </MapView>
             </View>
             <View style={{ position: 'absolute', top: 50 }}>
@@ -89,7 +161,7 @@ export default Home = ({ navigation }) => {
                     activeOpacity={1}
                 >
                     <View
-                        style={{ flex: 1 }}
+                        style={{ flex: 1, marginTop: 5 }}
                     >
                         <Logo
                             width={25}
@@ -109,11 +181,11 @@ export default Home = ({ navigation }) => {
                     </TouchableOpacity>
                     <TouchableOpacity
                         activeOpacity={1}
-                        style={{ width: '100%', height: '100%', flex: 1 }}
+                        style={{ width: '100%', height: '100%', flex: 1, marginTop: 5 }}
                         onPress={
                             () => {
                                 setUseUserLocation(true);
-                                handleCenter();
+                                handleCenter(regionLocal.latitude, regionLocal.longitude);
                             }
                         }
                     >
@@ -164,7 +236,7 @@ const styles = StyleSheet.create({
         fontFamily: fonts.text,
         fontSize: 20,
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'center'
     },
     map: {
         width: '100%',

@@ -67,8 +67,14 @@ export default SearchAddress = ({ navigation, route }) => {
                                         <TouchableOpacity
                                             onPress={
                                                 () => {
-                                                    route.params.setAddressHome((a.properties.street ? a.properties.street : a.properties.name));
-                                                    navigation.navigate('Home');
+                                                    navigation.navigate(
+                                                        'AddressNumber', 
+                                                        { 
+                                                            address: (a.properties.street ? a.properties.street : a.properties.name),
+                                                            city: a.properties.city, 
+                                                            setAddressHome: route.params.setAddressHome
+                                                        }
+                                                    );
                                                 }
                                             }
                                             activeOpacity={0.9}
