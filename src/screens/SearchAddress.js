@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Text, StyleSheet, View, SafeAreaView, TextInput, TouchableOpacity, LogBox } from 'react-native';
+import {
+    Text,
+    StyleSheet,
+    View,
+    SafeAreaView,
+    TextInput,
+    TouchableOpacity,
+    LogBox,
+} from 'react-native';
 
 export default SearchAddress = ({ navigation, route }) => {
-
     LogBox.ignoreLogs([
         'Non-serializable values were found in the navigation state',
     ]);
@@ -10,8 +17,8 @@ export default SearchAddress = ({ navigation, route }) => {
     const [searchObject, setSearchObject] = useState({
         isLoading: false,
         isSearching: false,
-        query: "",
-        search: []
+        query: '',
+        search: [],
     });
     const [placeholder, setPlaceholder] = useState('');
 
@@ -22,19 +29,26 @@ export default SearchAddress = ({ navigation, route }) => {
     }, []);
 
     function searchResults(text) {
-        fetch('https://photon.komoot.io/api/?q=' + encodeURI(text) + "&limit=10", {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json; charset=utf-8',
+        fetch(
+            'https://photon.komoot.io/api/?q=' + encodeURI(text) + '&limit=10',
+            {
+                method: 'GET',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json; charset=utf-8',
+                },
             }
-        })
-            .then(response => response.json())
-            .then(responseJson => {
-                setSearchObject({ isLoading: false, search: responseJson.features });
-            }).catch(e => {
+        )
+            .then((response) => response.json())
+            .then((responseJson) => {
+                setSearchObject({
+                    isLoading: false,
+                    search: responseJson.features,
+                });
+            })
+            .catch((e) => {
                 setSearchObject({ isLoading: false });
-                alert('erro ' + e)
+                alert('erro ' + e);
             });
     }
 
@@ -43,12 +57,23 @@ export default SearchAddress = ({ navigation, route }) => {
             <SafeAreaView style={styles.containerStyle}>
                 <TextInput
                     style={styles.inputStyle}
-                    ref={(input) => { searchInput = input; }}
+                    ref={(input) => {
+                        searchInput = input;
+                    }}
                     onChangeText={(t) => {
-                        setSearchObject({ query: t, isSearching: true, isLoading: true });
+                        setSearchObject({
+                            query: t,
+                            isSearching: true,
+                            isLoading: true,
+                        });
 
                         if (t.length === 0) {
-                            setSearchObject({ query: t, isSearching: false, isLoading: false });
+                            setSearchObject({
+                                query: t,
+                                isSearching: false,
+                                isLoading: false,
+                                search: [],
+                            });
                             return;
                         }
 
@@ -57,45 +82,39 @@ export default SearchAddress = ({ navigation, route }) => {
                     placeholder={placeholder}
                 />
                 <View style={styles.searchBoxContainer}>
-                    {
-                        searchObject.isLoading ?
-                            <Text>Pesquisando...</Text>
-                            :
-                            searchObject.search.map(
-                                (a, i) => {
-                                    return (
-                                        <TouchableOpacity
-                                            onPress={
-                                                () => {
-                                                    navigation.navigate(
-                                                        'AddressNumber', 
-                                                        { 
-                                                            address: (a.properties.street ? a.properties.street : a.properties.name),
-                                                            city: a.properties.city, 
-                                                            setAddressHome: route.params.setAddressHome
-                                                        }
-                                                    );
-                                                }
-                                            }
-                                            activeOpacity={0.9}
-                                            key={"search-autocomplete-" + i}
-                                            style={styles.rowStyle}
-                                        >
-                                            <Text
-                                                style={styles.addressStyle}
-                                            >
-                                                {a.properties.street ? a.properties.street : a.properties.name}
-                                            </Text>
-                                            <Text
-                                                style={styles.cityStyle}
-                                            >
-                                                {a.properties.city} ({a.properties.postcode})
-                                            </Text>
-                                        </TouchableOpacity>
-                                    )
-                                }
-                            )
-                    }
+                    {searchObject.isLoading ? (
+                        <Text>Pesquisando...</Text>
+                    ) : (
+                        searchObject.search.map((a, i) => {
+                            return (
+                                <TouchableOpacity
+                                    onPress={() => {
+                                        navigation.navigate('AddressNumber', {
+                                            address: a.properties.street
+                                                ? a.properties.street
+                                                : a.properties.name,
+                                            city: a.properties.city,
+                                            setAddressHome:
+                                                route.params.setAddressHome,
+                                        });
+                                    }}
+                                    activeOpacity={0.9}
+                                    key={'search-autocomplete-' + i}
+                                    style={styles.rowStyle}
+                                >
+                                    <Text style={styles.addressStyle}>
+                                        {a.properties.street
+                                            ? a.properties.street
+                                            : a.properties.name}
+                                    </Text>
+                                    <Text style={styles.cityStyle}>
+                                        {a.properties.city} (
+                                        {a.properties.postcode})
+                                    </Text>
+                                </TouchableOpacity>
+                            );
+                        })
+                    )}
                 </View>
             </SafeAreaView>
         </View>
@@ -106,7 +125,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     containerStyle: {
         flex: 1,
@@ -119,9 +138,9 @@ const styles = StyleSheet.create({
         height: '100%',
         padding: 20,
         zIndex: 1000,
-        justifyContent: "flex-start",
-        alignItems: "center",
-        backgroundColor: "#f5f5f5"
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        backgroundColor: '#f5f5f5',
     },
     inputStyle: {
         height: 50,
@@ -129,8 +148,8 @@ const styles = StyleSheet.create({
         paddingLeft: 20,
         paddingRight: 20,
         borderRadius: 5,
-        backgroundColor: "white",
-        shadowColor: "#000",
+        backgroundColor: 'white',
+        shadowColor: '#000',
         shadowOffset: {
             width: 0,
             height: 2,
@@ -146,7 +165,7 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start',
         minHeight: 75,
         marginTop: 20,
-        width: '100%'
+        width: '100%',
     },
     rowStyle: {
         flexDirection: 'row',
@@ -154,22 +173,22 @@ const styles = StyleSheet.create({
         paddingVertical: 20,
         paddingHorizontal: 30,
         borderBottomWidth: 1,
-        borderColor: '#e7e7e7'
+        borderColor: '#e7e7e7',
     },
     addressStyle: {
         fontSize: 14,
-        fontWeight: "800"
+        fontWeight: '800',
     },
     placeholderStyle: {
         fontSize: 14,
-        fontWeight: "800",
+        fontWeight: '800',
         marginBottom: 10,
-        color: "#000",
-        marginTop: 10
+        color: '#000',
+        marginTop: 10,
     },
     cityStyle: {
         fontSize: 10,
         marginLeft: 5,
-        color: '#6b6b6b'
-    }
+        color: '#6b6b6b',
+    },
 });
