@@ -9,19 +9,18 @@ import BackArrow from '../assets/images/back-arrow.svg';
 import ParticipaP from '../assets/images/participa-p.svg';
 
 import Problems from '../screens/Problems';
-import Confirmation from '../screens/Confirmation';
 import ProblemDetails from '../screens/ProblemDetails';
 import ImageView from '../screens/ImageView';
 
-const SettingsStack = createStackNavigator();
+const ProblemsStack = createStackNavigator();
 
-export default SettingsStacks = () => {
+export default ProblemsStacks = () => {
     return (
-        <SettingsStack.Navigator
-            initialRouteName="Settings"
+        <ProblemsStack.Navigator
+            initialRouteName="Problems"
             screenOptions={defaultScreenOptions}
         >
-            <SettingsStack.Screen
+            <ProblemsStack.Screen
                 name="Problems"
                 component={Problems}
                 options={{
@@ -35,22 +34,17 @@ export default SettingsStacks = () => {
                     },
                 }}
             />
-            <SettingsStack.Screen
+            <ProblemsStack.Screen
                 name="ProblemDetails"
                 component={ProblemDetails}
                 options={{ headerShown: false }}
             />
-            <SettingsStack.Screen
+            <ProblemsStack.Screen
                 name="ImageView"
                 component={ImageView}
                 options={{ title: 'Foto' }}
             />
-            <SettingsStack.Screen
-                name="Confirmation"
-                component={Confirmation}
-                options={{ headerShown: false }}
-            />
-        </SettingsStack.Navigator>
+        </ProblemsStack.Navigator>
     );
 };
 

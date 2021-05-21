@@ -10,13 +10,16 @@ import FlatButton from '../components/FlatButton';
 import Logo from '../components/Logo';
 
 export default Confirmation = ({ navigation, route }) => {
-    const { text, buttonText, navigateScreen } = route.params;
+    const { text, buttonText, navigateScreen, navigateParams, popToTop } =
+        route.params;
 
     const handleButtonPress = () => {
-        if (navigateScreen === 'pop') {
+        if (navigateScreen) {
+            navigation.navigate(navigateScreen, { ...navigateParams });
+        }
+
+        if (popToTop) {
             navigation.popToTop();
-        } else {
-            navigation.navigate(navigateScreen);
         }
     };
 

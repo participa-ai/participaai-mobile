@@ -46,7 +46,7 @@ export default ForgotPassword = ({ navigation }) => {
                 navigation.navigate('Confirmation', {
                     text: 'Nós enviamos para o seu e-mail as instruções para trocar sua senha. Por favor, verifique seu e-mail!',
                     buttonText: 'Voltar',
-                    navigateScreen: 'pop',
+                    popToTop: true,
                 });
             })
             .catch((error) => {

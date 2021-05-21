@@ -48,7 +48,7 @@ export default Signup = ({ navigation }) => {
                 navigation.navigate('Confirmation', {
                     text: 'Cadastro realizado com sucesso, entre no sistema com suas credenciais.',
                     buttonText: 'OK',
-                    navigateScreen: 'pop',
+                    popToTop: true,
                 });
             })
             .catch((error) => {

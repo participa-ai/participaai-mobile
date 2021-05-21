@@ -10,6 +10,7 @@ import ParticipaP from '../assets/images/participa-p.svg';
 
 import Home from '../screens/Home';
 import NewProblem from '../screens/NewProblem';
+import Confirmation from '../screens/Confirmation';
 import CameraScreen from '../screens/CameraScreen';
 import SearchAddress from '../screens/SearchAddress';
 import AddressNumber from '../screens/AddressNumber';
@@ -35,24 +36,29 @@ export default HomeStacks = () => {
                 }}
             />
             <HomeStack.Screen
+                name="Confirmation"
+                component={Confirmation}
+                options={{ headerShown: false }}
+            />
+            <HomeStack.Screen
                 name="CameraScreen"
                 component={CameraScreen}
                 options={{
-                    title: 'Tire uma foto do problema'
+                    title: 'Tire uma foto do problema',
                 }}
             />
             <HomeStack.Screen
                 name="SearchAddress"
                 component={SearchAddress}
                 options={{
-                    title: 'Procurar endereço'
+                    title: 'Procurar endereço',
                 }}
             />
             <HomeStack.Screen
                 name="AddressNumber"
                 component={AddressNumber}
                 options={{
-                    title: 'Digite o número'
+                    title: 'Digite o número',
                 }}
             />
         </HomeStack.Navigator>

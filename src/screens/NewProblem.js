@@ -193,12 +193,18 @@ export default NewProblem = ({ navigation, route }) => {
             actions.resetForm();
             setBase64Image(null);
 
-            // navigation.popToTop();
+            navigation.popToTop();
             navigation.navigate('Confirmation', {
                 text: 'Problema enviado, obrigado por participar, acompanhe o andamento em sua tela de problemas.',
                 buttonText: 'OK',
-                // navigateScreen: 'ProblemsStack',
-                // paramsToSend: { forceReload: true },
+                navigateScreen: 'ProblemsStack',
+                navigateParams: {
+                    screen: 'Problems',
+                    params: {
+                        forceReload: true,
+                    },
+                },
+                popToTop: true,
             });
         } catch (error) {
             console.error(error.message);

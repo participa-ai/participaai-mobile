@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, FlatList, Dimensions, Alert } from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
 
 import colors from '../styles/colors';
 import { globalStyles } from '../styles/global';
@@ -13,7 +14,7 @@ import ProblemCard from '../components/ProblemCard';
 export default Problems = ({ navigation, route }) => {
     const [problems, setProblems] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [forceReload, setForceReload] = useState(false);
+    const [forceReload, setForceReload] = useState(true);
 
     function handleCardOnPress(problem) {
         navigation.navigate('ProblemDetails', { problem });
@@ -42,10 +43,18 @@ export default Problems = ({ navigation, route }) => {
     }
 
     useEffect(() => {
-        fetchProblems();
+        if (forceReload) {
+            setLoading(true);
+            fetchProblems();
+        }
     }, [forceReload]);
 
-    if (route?.params?.forceReload) setForceReload(route?.params?.forceReload);
+    useFocusEffect(() => {
+        if (route?.params?.forceReload) {
+            route.params.forceReload = false;
+            setForceReload(true);
+        }
+    });
 
     if (loading) return <Loading />;
 
