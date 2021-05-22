@@ -14,10 +14,15 @@ import ProblemCard from '../components/ProblemCard';
 export default Problems = ({ navigation, route }) => {
     const [problems, setProblems] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [refreshing, setRefreshing] = useState(false);
     const [forceReload, setForceReload] = useState(true);
 
     function handleCardOnPress(problem) {
         navigation.navigate('ProblemDetails', { problem });
+    }
+
+    function handleRefresh() {
+        setForceReload(true);
     }
 
     async function fetchProblems() {
@@ -42,19 +47,20 @@ export default Problems = ({ navigation, route }) => {
             });
     }
 
-    useEffect(() => {
-        if (forceReload) {
-            setLoading(true);
-            fetchProblems();
-        }
-    }, [forceReload]);
-
     useFocusEffect(() => {
         if (route?.params?.forceReload) {
             route.params.forceReload = false;
             setForceReload(true);
         }
     });
+
+    useEffect(() => {
+        if (forceReload) {
+            setForceReload(false);
+            setLoading(true);
+            fetchProblems();
+        }
+    }, [forceReload]);
 
     if (loading) return <Loading />;
 
@@ -73,6 +79,8 @@ export default Problems = ({ navigation, route }) => {
                 keyExtractor={(item) => item._id}
                 showsVerticalScrollIndicator={true}
                 contentContainerStyle={styles.listContent}
+                onRefresh={handleRefresh}
+                refreshing={refreshing}
             />
         </View>
     );
