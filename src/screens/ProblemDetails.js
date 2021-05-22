@@ -26,7 +26,15 @@ export default ProblemDetails = ({ navigation, route }) => {
     }
 
     function handleOnPressLocation() {
-        navigation.navigate('HomeStack');
+        navigation.navigate('HomeStack', {
+            screen: 'Home',
+            params: {
+                manualLocation: {
+                    latitude: problem.localizacao.coordinates[1],
+                    longitude: problem.localizacao.coordinates[0],
+                },
+            },
+        });
     }
 
     return (
