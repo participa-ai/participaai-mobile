@@ -44,7 +44,7 @@ export default Login = ({ navigation }) => {
     return (
         <SafeAreaView style={globalStyles.container}>
             <Formik
-                initialValues={{ cpf: '444.652.000-80', password: '123456' }}
+                initialValues={{ cpf: '', password: '' }}
                 validationSchema={loginSchema}
                 onSubmit={(values, actions) => {
                     handleLogin(values);
