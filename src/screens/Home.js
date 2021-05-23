@@ -6,6 +6,7 @@ import {
     TouchableOpacity,
     Text,
     Dimensions,
+    Alert,
 } from 'react-native';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import * as Location from 'expo-location';
@@ -96,7 +97,8 @@ export default Home = ({ navigation, route }) => {
         Location.geocodeAsync(fullAddress)
             .then((results) => {
                 if (results.length <= 0) {
-                    console.log(
+                    Alert.alert(
+                        '',
                         'Não foi a encontrada a coordenada deste endereço!'
                     );
                     return;

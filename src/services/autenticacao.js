@@ -1,9 +1,10 @@
-import api from './api';
+import apiProvider from './apiProvider';
 import { resolve } from './resolve';
 
 const authUrl = '/autenticacao';
 
 export async function login(cpf, senha) {
+    const api = await apiProvider.getApi();
     const body = JSON.stringify({
         cpf,
         senha,
@@ -13,6 +14,7 @@ export async function login(cpf, senha) {
 }
 
 export async function cadastrar(formData) {
+    const api = await apiProvider.getApi();
     const { nome, cpf, email, senha } = formData;
     const body = JSON.stringify({
         nome,
@@ -25,6 +27,7 @@ export async function cadastrar(formData) {
 }
 
 export async function esqueciSenha(formData) {
+    const api = await apiProvider.getApi();
     const { email } = formData;
     const body = JSON.stringify({
         email,
@@ -34,6 +37,7 @@ export async function esqueciSenha(formData) {
 }
 
 export async function alterarSenha(formData) {
+    const api = await apiProvider.getApi();
     const { senhaAtual, senhaNova } = formData;
     const body = JSON.stringify({
         senhaAtual,
@@ -44,5 +48,6 @@ export async function alterarSenha(formData) {
 }
 
 export async function getEu() {
+    const api = await apiProvider.getApi();
     return await resolve(api.get(`${authUrl}/eu`, body));
 }
