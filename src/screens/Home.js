@@ -7,7 +7,7 @@ import {
     Text,
     Dimensions,
 } from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
+import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import * as Location from 'expo-location';
 import { useFocusEffect } from '@react-navigation/native';
 
@@ -211,6 +211,7 @@ export default Home = ({ navigation, route }) => {
                         })
                     }
                     ref={(component) => setMapView(component)}
+                    provider={PROVIDER_GOOGLE}
                 >
                     {!useUserLocation ? (
                         <Marker

@@ -1,35 +1,44 @@
 {
-  "expo": {
-    "name": "participaai-mobile",
-    "slug": "participaai-mobile",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FF5C46"
-      },
-      "package": "com.participaai.participaaimobile"
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    },
-    "description": "Participa aí! Mobile App",
-    "githubUrl": "https://github.com/participa-ai/participaai-mobile"
-  }
+    "expo": {
+        "name": "Participa aí!",
+        "slug": "participaai-mobile",
+        "version": "1.0.1",
+        "orientation": "portrait",
+        "icon": "./assets/icon.png",
+        "splash": {
+            "image": "./assets/splash.png",
+            "resizeMode": "contain",
+            "backgroundColor": "#ffffff"
+        },
+        "updates": {
+            "fallbackToCacheTimeout": 0
+        },
+        "assetBundlePatterns": ["**/*"],
+        "ios": {
+            "buildNumber": "1.0.0",
+            "bundleIdentifier": "com.participaai.participaaimobile",
+            "config": {
+                "googleMapsApiKey": "AIzaSyDt-AzTWC7unOqzm9qRDxLgpl-mf-SbdYw"
+            },
+            "supportsTablet": true
+        },
+        "android": {
+            "adaptiveIcon": {
+                "foregroundImage": "./assets/adaptive-icon.png",
+                "backgroundColor": "#FF5C46"
+            },
+            "config": {
+                "googleMaps": {
+                    "apiKey": "AIzaSyB9tkkQpSnMEz1qdrH-BUkYWYWdm-K6IsI"
+                }
+            },
+            "package": "com.participaai.participaaimobile",
+            "versionCode": 1
+        },
+        "web": {
+            "favicon": "./assets/favicon.png"
+        },
+        "description": "Participa aí! Mobile App",
+        "githubUrl": "https://github.com/participa-ai/participaai-mobile"
+    }
 }

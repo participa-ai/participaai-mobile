@@ -38,7 +38,7 @@ export default About = () => {
                 <Text style={[styles.smallText]}>
                     participaai.app@gmail.com
                 </Text>
-                <Text style={[styles.smallText]}>Versão 1.0.0a</Text>
+                <Text style={[styles.smallText]}>Versão 1.0.1</Text>
             </View>
         </View>
     );
