@@ -20,9 +20,8 @@ export default CameraScreen = ({ navigation, route }) => {
     const [hasPermissionCamera, setHasPermissionCamera] = useState(null);
     const [hasPermissionMedia, setHasPermissionMedia] = useState(null);
     const [opacity, setOpacity] = useState(new Animated.Value(1));
-
-    const type = Camera.Constants.Type.back;
-    let camera = new Camera();
+    const [camera, setCamera] = useState(new Camera());
+    const [pictureSize, setPictureSize] = useState(undefined);
 
     useEffect(() => {
         async function askPermission() {
@@ -41,7 +40,7 @@ export default CameraScreen = ({ navigation, route }) => {
             fadeOutAndIn();
 
             camera
-                .takePictureAsync({ base64: true, quality: 0 })
+                .takePictureAsync({ base64: true, skipProcessing: true })
                 .then((resp) => {
                     if (hasPermissionMedia) {
                         const newImageUri =
@@ -52,8 +51,6 @@ export default CameraScreen = ({ navigation, route }) => {
                             type: mime.getType(newImageUri),
                             name: newImageUri.split('/').pop(),
                         });
-
-                        MediaLibrary.saveToLibraryAsync(resp.uri);
 
                         navigation.navigate('NewProblem');
                     }
@@ -94,10 +91,9 @@ export default CameraScreen = ({ navigation, route }) => {
                 <View style={styles.container}>
                     <Camera
                         style={styles.camera}
-                        type={type}
-                        ref={(ref) => {
-                            camera = ref;
-                        }}
+                        type={Camera.Constants.Type.back}
+                        ref={(ref) => setCamera(ref)}
+                        autoFocus={false}
                     >
                         <View style={styles.containerCamera}>
                             <TouchableOpacity style={styles.touchIcon}>
