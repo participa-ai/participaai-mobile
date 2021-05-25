@@ -32,6 +32,7 @@ export default NewProblem = ({ navigation, route }) => {
     const [open, setOpen] = useState(false);
     const [categories, setCategories] = useState([]);
     const [endereco, setEndereco] = useState('');
+    const [loadingCategories, setLoadingCategories] = useState(true);
 
     const newProblemInitialValues = {
         localizacao: {
@@ -94,6 +95,7 @@ export default NewProblem = ({ navigation, route }) => {
     }, []);
 
     async function fetchCategories() {
+        setLoadingCategories(true);
         categoriasService
             .listar()
             .then((response) => {
@@ -120,8 +122,10 @@ export default NewProblem = ({ navigation, route }) => {
                     });
 
                 setCategories(fetchedCategories);
+                setLoadingCategories(false);
             })
             .catch((error) => {
+                setLoadingCategories(false);
                 Alert.alert('Ops', 'Falha ao comunicar com o servidor!');
                 console.error(error.message);
             });
@@ -235,6 +239,7 @@ export default NewProblem = ({ navigation, route }) => {
                                 <DropDownPicker
                                     open={open}
                                     items={categories}
+                                    loading={loadingCategories}
                                     value={formikProps.values.categoria}
                                     setValue={(callback) => {
                                         formikProps.setFieldValue(
@@ -272,6 +277,9 @@ export default NewProblem = ({ navigation, route }) => {
                                     labelProps={{
                                         numberOfLines: 1,
                                         ellipsizeMode: 'tail',
+                                    }}
+                                    translation={{
+                                        NOTHING_TO_SHOW: 'Nada para mostrar...',
                                     }}
                                 />
                                 <Text style={globalStyles.errorText}>
