@@ -16,7 +16,7 @@ export default ProblemWorkflow = ({ problem, style }) => {
                 return (
                     <Workflow2
                         style={styles.workflow}
-                        width={'85%'}
+                        width={'100%'}
                         height={'100%'}
                         // width={calculatedWidth}
                         // height={calculatedHeight}
@@ -26,7 +26,7 @@ export default ProblemWorkflow = ({ problem, style }) => {
                 return (
                     <Workflow3
                         style={styles.workflow}
-                        width={'85%'}
+                        width={'100%'}
                         height={'100%'}
                         // width={calculatedWidth}
                         // height={calculatedHeight}
@@ -36,7 +36,7 @@ export default ProblemWorkflow = ({ problem, style }) => {
                 return (
                     <Workflow4
                         style={styles.workflow}
-                        width={'85%'}
+                        width={'100%'}
                         height={'100%'}
                         // width={calculatedWidth}
                         // height={calculatedHeight}
@@ -46,7 +46,7 @@ export default ProblemWorkflow = ({ problem, style }) => {
                 return (
                     <Workflow1
                         style={styles.workflow}
-                        width={'85%'}
+                        width={'100%'}
                         height={'100%'}
                         // width={calculatedWidth}
                         // height={calculatedHeight}

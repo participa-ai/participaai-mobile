@@ -135,8 +135,8 @@ const styles = StyleSheet.create({
     workflow: {
         alignItems: 'center',
         justifyContent: 'center',
-        height: Dimensions.get('screen').height * 0.05,
-        marginVertical: Dimensions.get('screen').height * 0.008,
+        height: Dimensions.get('screen').height * 0.06,
+        marginVertical: Dimensions.get('screen').height * 0.007,
     },
     title: {
         borderBottomColor: colors.orange,
