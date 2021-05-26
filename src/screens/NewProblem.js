@@ -273,6 +273,9 @@ export default NewProblem = ({ navigation, route }) => {
                                     listMode="MODAL"
                                     modalProps={{
                                         animationType: 'slide',
+                                        onRequestClose: () => {
+                                            setOpen(!open);
+                                        },
                                     }}
                                     labelProps={{
                                         numberOfLines: 1,
