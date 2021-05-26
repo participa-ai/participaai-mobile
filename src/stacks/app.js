@@ -15,7 +15,7 @@ export default AppStacks = () => {
             initialRouteName="HomeStack"
             activeColor={colors.whiteShade}
             inactiveColor={colors.blueShade}
-            backBehavior="initialRoute"
+            backBehavior="history"
             barStyle={{ backgroundColor: colors.blue }}
         >
             <AppBottomTab.Screen
