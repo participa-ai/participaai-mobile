@@ -165,11 +165,6 @@ export default NewProblem = ({ navigation, route }) => {
     }
 
     async function handleEnviar(formData, actions) {
-        if (base64Image === null) {
-            Alert.alert('', 'Por favor insira uma foto');
-            return;
-        }
-
         setIsWaiting(true);
 
         try {
@@ -183,14 +178,16 @@ export default NewProblem = ({ navigation, route }) => {
                 return;
             }
 
-            const uploadResponse = await uploadFoto(
-                response?.data?._id,
-                base64Image
-            );
+            if (base64Image) {
+                const uploadResponse = await uploadFoto(
+                    response?.data?._id,
+                    base64Image
+                );
 
-            if (!uploadResponse.success) {
-                const message = processMessage(uploadResponse.data.message);
-                Alert.alert('', message);
+                if (!uploadResponse.success) {
+                    const message = processMessage(uploadResponse.data.message);
+                    Alert.alert('', message);
+                }
             }
 
             setIsWaiting(false);
