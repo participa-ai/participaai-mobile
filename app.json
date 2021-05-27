@@ -2,7 +2,7 @@
     "expo": {
         "name": "Participa aí!",
         "slug": "participaai-mobile",
-        "version": "1.0.2",
+        "version": "1.0.3",
         "orientation": "portrait",
         "icon": "./assets/icon.png",
         "splash": {
@@ -15,7 +15,7 @@
         },
         "assetBundlePatterns": ["**/*"],
         "ios": {
-            "buildNumber": "1.0.2",
+            "buildNumber": "1.0.3",
             "bundleIdentifier": "com.participaai.participaaimobile",
             "config": {
                 "googleMapsApiKey": "AIzaSyDt-AzTWC7unOqzm9qRDxLgpl-mf-SbdYw"
@@ -33,7 +33,7 @@
                 }
             },
             "package": "com.participaai.participaaimobile",
-            "versionCode": 2
+            "versionCode": 3
         },
         "web": {
             "favicon": "./assets/favicon.png"

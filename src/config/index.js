@@ -1,7 +1,7 @@
 const asyncStorageKeyBase = '@participaai';
 
 export default {
-    apiBaseUrl: 'https://participa-ai-dev.herokuapp.com/api',
+    apiBaseUrl: 'https://participa-api.herokuapp.com/api',
     asyncStorageKeys: {
         token: `${asyncStorageKeyBase}:token`,
     },
