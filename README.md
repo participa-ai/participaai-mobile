@@ -92,7 +92,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
     <td align="center">
       <img
         style="border-radius: 50%;" 
-        src="https://avatars.githubusercontent.com/u/81780358?v=4" 
+        src="https://avatars.githubusercontent.com/u/56940225?v=4" 
         width="100px;" 
         alt=""
       />
